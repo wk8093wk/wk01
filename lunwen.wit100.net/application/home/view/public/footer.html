@@ -1,0 +1,10 @@
+		<footer>
+			<div class="als">
+				<span>友情链接：</span>
+                {foreach name='link' item='vo' key='k'}
+				<a href="{$vo.link}" target="_blank">{$vo.name}</a>
+                {/foreach}
+				
+			</div>
+			<p>{$sys.seo_copyright}</p>
+		</footer>

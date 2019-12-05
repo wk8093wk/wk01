@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+
+  <div class="layui-fluid" id="LAY-app-message">
+    <div class="layui-card">
+        <div class="layui-card-header">管理员角色</div>
+        <div class="layui-card-body">
+            <div class="table-head-btn" style="margin-bottom: 10px;">
+           
+            <!--    <button class="layui-btn" data-type="add">添加角色</button>
+                <button class="layui-btn layui-btn-danger" data-type="direct">删除</button>-->
+            </div>
+            <table class="layui-hide" id="list" lay-filter="list"></table>
+        </div>
+    </div>
+  </div>
+  
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|禁用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+	<script type="text/html" id="action">
+		
+		
+		
+		{{ d.role_id == 2 ? '<a class="layui-btn layui-btn-xs" lay-event="juese">角色设置</a>' : '' }}
+		
+		<!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
+	</script>
+	<script>
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','user_group']);
+	</script>
+</body>
+</html>

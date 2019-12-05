@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>工作组</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+		
+        {include file="public/header" /}
+        
+        		<div class="nav">
+			<ul>
+				<li>
+					<a href="{:url('index/index')}">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="{:url('news/news')}">
+						新闻动态
+					</a>
+				</li>
+				<li>
+					<a href="{:url('meeting/meeting')}">
+						会议信息
+					</a>
+				</li>
+				<li>
+					<a href="{:url('project/project')}">
+						物理与工程
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!--与首页样式相同 单独修改本页 .meetsbox.index-->
+		<div class="index meetsbox">
+			<div class="index_left">
+            <div class="index_news on">
+				
+            </div>
+			{empty name="list"}
+                 <tr><td class="no-records" colspan="9">没有找到任何记录</td></tr>
+                {else /}
+      		
+
+            {foreach name='list' item='vo' key='k'}
+            
+            	{if $vo.mold == 1}
+                <div class="index_news on">
+					<ul>
+						<li>
+							<a href="/home/news/news_detail.html?id={$vo.article_id}">
+								<h4>{$vo.name}</h4>
+								<p>{$vo.content|subtext=70}</p>
+								<div class="sign">
+									{foreach name="$vo.group_arr" item='vovo' key='kk'}
+                                        {if $vovo!=""}
+                                        <div class="inverted" style="margin-right: 10px;">
+                                            {$vovo}
+                                		</div>
+                               			{/if}
+                              		{/foreach} 
+									<div class="numbox">
+                                    	<div class="time">
+											{$vo.add_time}
+										</div>
+										<div class="time">
+											浏览：{$vo.click}
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</a>
+                            
+						</li>	
+					</ul>
+				</div>
+               
+                {elseif $vo.mold == 2}
+				<div class="index_information">
+					
+					<div class="record">
+						<div class="meeting">
+							<a href="/home/meeting/meeting_detail.html?id={$vo.article_id}">
+                            
+                            	{if $vo.thumb}
+								<div class="picer">
+									<img src="{$vo.thumb}"/>
+								</div>
+                                {/if}
+								<div {if $vo.thumb}class="infos"{/if}>
+									<h3>{$vo.name}</h3>
+									<div class="describe">
+										<span class="item">
+											会议地点：{$vo.address}
+										</span>
+										<span class="item">
+											会议时间：{$vo.start_time}{$vo.end_time}
+										</span>
+										<div class="clear"></div>
+									</div>
+									<p>{$vo.content|subtext=70}
+                                    </p>
+									
+									<div class="sign">
+                                    
+                                        {foreach name="$vo.group_arr" item='vovo' key='kk'}
+                                            {if $vovo!=""}
+                                            <div class="inverted" style="margin-right: 10px;">
+                                                {$vovo}
+                                            </div>
+                                            {/if}
+                                        {/foreach} 
+                                        
+										
+										<div class="numbox">
+											<div class="time">
+												{$vo.add_time}
+											</div>
+											<div class="time">
+												浏览：{$vo.click}
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</a>
+							
+						</div>
+					</div>
+				</div>
+                
+                {elseif $vo.mold == 3}
+                <div class="index_news on">
+					<ul>
+						<li>
+							<a href="/home/project/project_detail.html?id={$vo.article_id}">
+								<h4>{$vo.name}</h4>
+								<p>{$vo.content|subtext=70}</p>
+								<div class="sign">
+									{foreach name="$vo.group_arr" item='vovo' key='kk'}
+                                        {if $vovo!=""}
+                                        <div class="inverted" style="margin-right: 10px;">
+                                            {$vovo}
+                                		</div>
+                               			{/if}
+                              		{/foreach} 
+									<div class="numbox">
+                                    	<div class="time">
+											{$vo.add_time}
+										</div>
+										<div class="time">
+											浏览：{$vo.click}
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</a>
+                            
+						</li>	
+					</ul>
+				</div>
+                 
+                {/if}
+                
+              {/foreach}    
+                
+              {/empty}  
+                
+                
+                
+				<!--分页-->
+				<!--<div class="pageings">
+					<ul>
+                    {$page|raw}
+						
+					</ul>
+				</div>-->
+				<!--end-->
+			</div>
+			
+            	{include file="public/right" /}
+            
+		</div>
+		
+        	{include file="public/footer" /}
+        
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+	</body>
+</html>

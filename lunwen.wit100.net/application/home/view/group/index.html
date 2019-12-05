@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body>
+		<header class="on">
+			<div class="header_center">
+
+				<h1>
+					<a href="/"><img src="__HOMEIMG__/biao.png"/></a>
+				</h1>
+
+			</div>
+		</header>
+		
+		<div class="login">
+			<div class="pic">
+				<img src="__HOMEIMG__/login.png"/>
+			</div>
+			<div class="windowbox">
+				<h3>注册</h3>
+				<div class="tab_content">
+					<div class="tab_zi">
+                    <form method="post" action="http://test.open.izhixue.cn/sms?token={$token}">
+						<div class="item">
+							<div class="infos">
+                            	
+								<input type="text" name="phone" value="15762491395" class="text3" placeholder="手机号" />
+                                <input type="hidden" name="type" value="1">
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="item">
+							<div class="infos">
+                                
+							</div>
+							<div class="clear"></div>
+                            <input type="submit" class="btns" />
+						</div>
+                    </form>
+					</div>
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+        	{include file="public/footer" /}
+        
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+		<script>
+			var countdown = 60;
+			var obj = $(".yan");
+		
+			function settime() { //发送验证码倒计时
+				var mobile=$('#mobile').val();
+				
+				if(!(/^1[3456789]\d{9}$/.test(mobile))){ 
+					layer.msg('手机号码有误，请重填！', {time: 1500});
+					return false; 
+				} 
+				if(countdown == 0) {
+					obj.val("获取验证码");
+					obj.css('pointer-events', 'auto');
+					countdown = 60;
+					return;
+				} else {
+					obj.val("重新发送(" + countdown + ")s");
+					countdown--;
+		
+					obj.css('pointer-events', 'none');
+				}
+		
+				setTimeout(function() {
+					settime();
+				}, 1000)
+			}
+		
+			$(".yan").click(function() {
+				settime();
+			})
+
+		</script>
+        
+        
+        <script>
+        	function zhuce(){
+				var mobile=$('#mobile').val();
+				var password=$('#password').val();
+				var password2=$('#password2').val();
+				
+				
+				if(password ==''){
+					layer.msg('请输入注册密码！', {time: 1500});
+					return false;
+				}
+				if(password != password2){
+					layer.msg('两次输入的密码不一致！', {time: 1500});
+					return false;
+				}
+				
+				if($('#checkbox1').is(':checked')) {
+				}else{
+					layer.msg('请阅读条款并同意！', {time: 1500});
+					return false;
+				}
+				
+				
+				$.ajax({
+						url: "{:url('user/zhuce')}",
+						type:"POST",
+						data:{mobile:mobile,password:password},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('注册成功！', {time: 1500});
+								window.location.href="{:url('user/login')}";
+							}else{
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        <script>
+        	function send(){
+				var mobile=$('#mobile').val();
+				var token={$token};
+				if(mobile ==''){
+					layer.msg('请输入手机号/邮箱！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "http://test.open.izhixue.cn/sms/",
+						type:"POST",
+						data:{mobile:'15762491395',type:1,token:token},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('注册成功！', {time: 1500});
+								//window.location.href="{:url('user/login')}";
+							}else{
+							}
+					   }
+			 	});
+			}
+        </script>
+
+	</body>
+</html>

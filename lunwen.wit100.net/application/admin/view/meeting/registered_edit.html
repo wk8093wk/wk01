@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+  <style>
+  .layui-form-item .layui-input-inline{ width:400px;}
+  </style>
+  <script>
+  var GetUploadify_url = "{:url('Uploadify/upload')}";
+  </script>
+</head>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">编辑报名用户信息</div>
+                <div class="layui-card-body" pad15="">
+                 
+                    <form class="layui-form" wid100 lay-filter="">
+                    
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户ID</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="user_id" lay-verify="required" value="{$info.user_id}" placeholder="用户ID" autocomplete="off" class="layui-input" readonly>
+                            </div>
+                        </div>
+                        
+                       
+                        
+                         <div class="layui-form-item">
+                            <label class="layui-form-label">提交报名时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="add_time" lay-verify="required" value="{$info.add_time}" placeholder="请输入提交报名时间" autocomplete="off" class="layui-input" readonly>
+                            </div>
+                        </div>
+
+                    	
+                        
+                        个人信息
+                         <div class="layui-form-item">
+                            <label class="layui-form-label">手机号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="mobile" lay-verify="required" value="{$info.mobile}" placeholder="请输入手机号" autocomplete="off" class="layui-input" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email" lay-verify="required" value="{$info.email}" placeholder="请输入邮箱" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                       
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">单位</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="company" lay-verify="required" value="{$info.company}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name" lay-verify="required" value="{$info.name}" placeholder="" autocomplete="off" class="layui-input" readonly>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="sex" value="1" title="男" {if $info.sex == '1'}checked{/if}>
+                             	<input type="radio" name="sex" value="2" title="女" {if $info.sex == '2'}checked{/if}>
+                                <input type="radio" name="sex" value="0" title="保密" {if $info.sex == '0'}checked{/if} disabled>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">职称	</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" lay-verify="required" value="{$info.title}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">部门及职务</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="department" lay-verify="required" value="{$info.department}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">微信号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="weixin" lay-verify="required" value="{$info.weixin}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">参会费缴纳</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="payment" value="0" title="转账汇款" {if $info.payment == '0'}checked{/if}>
+                             	<input type="radio" name="payment" value="1" title="现场缴费" {if $info.payment == '1'}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">公司名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="companyname" lay-verify="required" value="{$info.companyname}" placeholder="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">税号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="duty" lay-verify="required" value="{$info.duty}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">单位地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="companyadd" lay-verify="required" value="{$info.companyadd}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                  		<div class="layui-form-item">
+                            <label class="layui-form-label">电话号码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="tel" lay-verify="required" value="{$info.tel}" placeholder="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">开户银行</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="deposit" lay-verify="required" value="{$info.deposit}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">银行账户</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="account" lay-verify="required" value="{$info.account}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发票项目</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="project" value="0" title="会议费" {if $info.project == '0'}checked{/if}>
+                             	<input type="radio" name="project" value="1" title="会务费" {if $info.project == '1'}checked{/if}>
+                            </div>
+                        </div>
+                        
+                        
+                        发票邮寄地址
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">收件人姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="addressname" lay-verify="required" value="{$info.addressname}" placeholder="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">收件人电话</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="addresstel" lay-verify="required" value="{$info.addresstel}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">收件地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="addressadd" lay-verify="required" value="{$info.addressadd}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        
+                        住房预定
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">酒店</label>
+                            <div class="layui-input-inline">  
+                              <select name="hotel_id" lay-filter="province" id="province" lay-verify="required">
+                                <option value="0">未选择酒店</option>
+                                {volist name="hotel_list" id="vo"} 
+                                <option value="{$vo.hotel_id}" {if $vo.hotel_id eq $info.hotel_id}selected=""{/if}>{$vo.name}</option>
+                                {/volist}
+                              </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">房间规格</label>
+                            <div class="layui-input-inline"> 
+                            	<select name="room_id" id="room" lay-verify="required"  class="w300">
+                                	<option value="{$info.room_id}">{$info.room_id}</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <!--<div class="layui-form-item">
+                            <label class="layui-form-label">房间规格</label>
+                            <div class="layui-input-inline">
+                                <select name="room_id" lay-filter="aihao">
+                                <option value="0">未选择房间规格</option>
+                                {volist name="room_list" id="vo"} 
+                                <option value="{$vo.room_id}" {if $vo.room_id eq $info.room_id}selected=""{/if}>{$vo.name}</option>
+                                {/volist}
+                              </select>
+                            </div>
+                        </div>-->
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">入住时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="in_time" lay-verify="required" value="{$info.in_time}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">离店时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="out_time" lay-verify="required" value="{$info.out_time}" placeholder="" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否同意拼房</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="spare" value="0" title="是" {if $info.spare == '0'}checked{/if}>
+                             	<input type="radio" name="spare" value="1" title="否" {if $info.spare == '1'}checked{/if}>
+                            </div>
+                        </div>
+                       
+                        
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="hidden" value="{$info.registered_id}" name="registered_id">
+
+                                <button type="button" class="layui-btn" lay-submit lay-filter="edit-but">确认保存</button>
+                            </div>
+                        </div>
+                    </form>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script> 
+     <script src="__STATIC__/admin/js/layui-mz-min.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|禁用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+	<script type="text/html" id="action">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+	    var url= "/admin/meeting/registered_json/catid/{$info.catid}.html";
+		var editUrl = "/admin/meeting/registered_edit.html";
+        var addUrl = "/admin/meeting/registered_add/catid/{$info.catid}.html";
+        var delUrl = "/admin/meeting/registered_del.html";
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','registered']);
+	</script>
+</body>
+</html>

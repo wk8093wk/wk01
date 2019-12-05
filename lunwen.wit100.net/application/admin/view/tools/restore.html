@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+
+ <div class="layui-fluid" id="LAY-app-message">
+    <div class="layui-card">
+        <div class="layui-card-header">备份文件列表</div>
+        <div class="layui-card-body layui-text">
+            <table class="layui-table" id="restore" lay-filter="restore"></table>
+        </div>
+    </div>
+</div>
+  
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+     <script type="text/html" id="action">
+    <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="recover">还原</button>
+    <a href="/admin/database/downFile.html?time={{d.time}}" class="layui-btn layui-btn-xs">下载</a>
+    <button class="layui-btn layui-btn-xs layui-btn-danger"  lay-event="del">删除</button>
+</script>
+   <script>
+    layui.config({
+        base: '__STATIC__/layuiadmin/',version: true    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','database']);
+</script>
+	
+</body>
+</html>

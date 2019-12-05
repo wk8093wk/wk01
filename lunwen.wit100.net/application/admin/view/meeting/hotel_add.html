@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+  <style>
+  .layui-form-item .layui-input-inline{ width:400px;}
+  </style>
+  <script>
+  var GetUploadify_url = "{:url('Uploadify/upload')}";
+  </script>
+</head>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">添加酒店信息</div>
+                <div class="layui-card-body" pad15="">
+                    <div class="layui-form" wid100 lay-filter="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">酒店名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name" lay-verify="required" value="" placeholder="请输入酒店名称" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+						
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">酒店地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="address" lay-verify="required" value="" placeholder="请输入酒店地址" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                       
+                      	 <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">酒店说明</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="content" lay-verify="required" value="" placeholder="请输入酒店说明" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                        
+                        
+                        
+                      
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="hidden" value="{$catid}" name="catid">
+                                <button type="button" class="layui-btn" lay-submit lay-filter="add-but">确认保存</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script> 
+     <script src="__STATIC__/admin/js/layui-mz-min.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|禁用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+	<script type="text/html" id="action">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+	    var url= "/admin/meeting/hotel_json/catid/{$catid}.html";
+		var editUrl = "/admin/meeting/hotel_edit.html";
+        var addUrl = "/admin/meeting/hotel_add/catid/{$catid}.html";
+        var delUrl = "/admin/meeting/hotel_del.html";
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','hotel']);
+	</script>
+    
+ 
+
+
+</body>
+</html>

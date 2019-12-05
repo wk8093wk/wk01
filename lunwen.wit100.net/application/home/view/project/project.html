@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>物理与工程</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+		
+        	{include file="public/header" /}
+            
+          <div class="nav">
+			<ul>
+				<li>
+					<a href="{:url('index/index')}">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="{:url('news/news')}">
+						新闻动态
+					</a>
+				</li>
+				<li>
+					<a href="{:url('meeting/meeting')}">
+						会议信息
+					</a>
+				</li>
+				<li class="on">
+					<a href="{:url('project/project')}">
+						物理与工程
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!--与首页样式相同 单独修改本页 physics-->
+		<div class="index physics">
+			<div class="index_left">
+				
+				<div class="draft_box">
+					<div class="books">
+						<div class="pic_box">
+							<img src="{$info7.thumb}"/>
+						</div>
+						<div class="writers">
+							<h3>{$info7.name}</h3>
+							<p>
+								{$info7.content}
+							</p>
+							<a href="{$info7.link}" target="_blank">点击进入</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="codes">
+						<div class="online">
+							<img src="{$info8.thumb}"/>
+							<a href="{$info8.link}" target="_blank">{$info8.name}</a>
+						</div>
+						<div class="online">
+							<img src="{$info9.thumb}"/>
+							<a href="{$info9.link}" target="_blank" class="on">{$info9.name}</a>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+				<div class="index_news">
+					<div class="titlebox">
+						<h3>免费资料</h3>
+						<div class="clear"></div>
+					</div>
+					<ul>
+                    
+                    	{foreach name='list' item='vo' key='k'}
+						<li>
+                        
+                        	
+                        		<a href="/home/project/project_detail.html?id={$vo.project_id}">
+                          
+                          
+                            	{if $vo.thumb != ''}
+                        			<div class="picer">
+										<img src="{$vo.thumb}"/>
+									</div>
+                        		{/if}
+                        
+								<div {if $vo.thumb != ''} class="infos"{/if}>
+									<h4>{$vo.name}</h4>
+									<p>{$vo.content|raw|subtext=90}</p>
+									<div class="sign">
+										<div class="numbox">
+											
+											<div class="time">
+												{$vo.add_time}
+											</div>
+											<div class="time">
+												浏览：{$vo.click}
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</li>
+                        {/foreach}
+                        
+                        
+					</ul>
+					
+				</div>
+				<!--分页-->
+				<div class="pageings">
+					<ul>
+                    {$page|raw}
+						<li>
+							<div class="zong">
+								10条/页
+							</div>
+						</li>
+						<li>
+							<span>
+													跳至
+												</span>
+						</li>
+						<li>
+                            <input type="text" id="p" value="" class="text" />
+                            <input type="hidden" id="shu" value="{$shu}">
+						</li>
+						<li>
+							<span>
+													页
+												</span>
+						</li>
+                        <li>
+							<span>
+													<input type="button" id="" onClick="url()" value="跳转" class='zong pageings' style="margin-left: 0px;"/>
+												</span>
+						</li>
+					</ul>
+				</div>
+				<!--end-->
+			</div>
+			
+            	{include file="public/right" /}
+            
+		</div>
+			
+            {include file="public/footer" /}
+            
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+
+		<script>
+        	function sun(url,project_id){
+				$.ajax({
+							url: "{:url('project/ajax_num')}",
+							type:"post",
+							data:{project_id:project_id},
+							dataType:"json",
+							success: function(data){
+								console.log(data);
+								if(data.status==1){
+									window.open(url);
+								}
+						   }
+				 });
+
+			}
+        </script>
+        
+         <script>
+        	function url(){
+				var p= $("#p").val();
+				var shu= $("#shu").val();
+				if(p > shu || p < 1){
+					layer.msg('请输入正确的页数', {time: 2000});
+				}else{
+					window.location.href = '/home/Project/project/p/'+p+'.html';
+				}
+			}
+        </script>
+
+	</body>
+</html>

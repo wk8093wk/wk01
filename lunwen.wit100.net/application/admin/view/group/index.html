@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+
+  <div class="layui-fluid" id="LAY-app-message">
+    <div class="layui-card">
+        <div class="layui-card-header">工作组列表</div>
+        <div class="layui-card-body">
+            <div class="table-head-btn" style="margin-bottom: 10px;">
+                
+                <button class="layui-btn" data-type="add">添加工作组</button>
+                <button class="layui-btn layui-btn-danger" data-type="direct">删除</button>
+            </div>
+            <table class="layui-hide" id="list" lay-filter="list"></table>
+        </div>
+    </div>
+  </div>
+  <script type="text/html" id="catname">
+  	
+	{{# if(d.catid==0){ }}
+    {{d.name}}
+    {{# }else{ }}
+    |——{{d.name}}
+    {{# } }}
+	
+   </script>
+   
+   
+   
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|禁用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+
+	<script type="text/html" id="action">
+		{{# if(d.catid==0){ }}
+		<a class="layui-btn layui-btn-xs" lay-event="addgzz">添加二级工作组</a>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		{{# }else{ }}
+  		<a class="layui-btn layui-btn-xs" lay-event="edit2">编辑</a>
+    	{{# } }}
+		
+		
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+		
+		var sortUrl= "/admin/group/index_listorder.html";
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','group']);
+	</script>
+</body>
+</html>

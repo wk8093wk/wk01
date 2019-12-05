@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>新闻详情</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+			
+            {include file="public/header" /}
+            
+          <div class="nav">
+			<ul>
+				<li>
+					<a href="{:url('index/index')}">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="{:url('news/news')}">
+						新闻动态
+					</a>
+				</li>
+				<li>
+					<a href="{:url('meeting/meeting')}">
+						会议信息
+					</a>
+				</li>
+				<li class="on">
+					<a href="{:url('project/project')}">
+						物理与工程
+					</a>
+				</li>
+			</ul>
+		</div>
+            		
+		<!--与首页样式相同 单独修改本页 .news.page_news-->
+		<div class="index page_news">
+			<div class="index_left">
+				<div class="index_news">
+					<div class="article">
+						<div class="bread">
+							<a href="{:url('project/project')}">物理与工程></a>
+							<a href="">文章详情</a>
+						</div>
+						<h3>{$infon.name}</h3>
+						<div class="sign_two">
+                        
+							
+                            
+							<div class="numbox_two">
+                            
+								<div class="time_two">
+									{$infon.add_time}
+								</div>
+								<div class="time_two">
+									浏览：{$infon.click}
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="loadbox">
+                        
+                        {foreach name="info2" item='vo' key='k'}
+							<div class="item">
+								<div class="name">
+									<a href="{$config.ipaddress}/resource/download?resourceId={$vo.annex}&token={$osstoken}" download target="_blank" style="float: left; font-size: 14px; color: rgba(102,102,102,1);line-height: 19px; width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: underline;">{$vo.name}</a>
+								</div>
+								<a href="{$config.ipaddress}/resource/download?resourceId={$vo.annex}&token={$osstoken}" download target="_blank">下载</a>
+								<div class="clear"></div>
+							</div>
+                      	{/foreach}
+                            
+						</div>
+						<div class="content">
+							 {$infon.content|raw}
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+            {include file="public/right" /}
+            
+		</div>
+			
+            {include file="public/footer" /}
+            
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+
+
+	</body>
+</html>

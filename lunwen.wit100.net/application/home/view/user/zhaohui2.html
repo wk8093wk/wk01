@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>找回密码</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body>
+		<header class="on">
+			<div class="header_center">
+
+				<h1>
+					<a href="/"><img src="__HOMEIMG__/biao.png"/></a>
+				</h1>
+
+			</div>
+		</header>
+		
+		<div class="login">
+			<div class="pic">
+				<img src="__HOMEIMG__/login.png"/>
+			</div>
+			<div class="windowbox">
+				<h3>密码找回</h3>
+				<div class="tab_content">
+					<div class="tab_zi">
+						<div class="item">
+							<div class="infos">
+								<input type="text" name="password" id="password" value="" class="text3" placeholder="请输入新密码" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="item">
+							<div class="infos">
+								<input type="text" name="password2" id="password2" value="" class="text3" placeholder="确认新密码" />
+							</div>
+							<div class="clear"></div>
+						</div>
+                        <input type="hidden" value="{$mobile}" id="mobile" />
+						<input type="button" id="" name="" value="确认" class="btns mgb" onClick="find2()"/>
+					</div>
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+        	{include file="public/footeron" /}
+        
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+		<script>
+			var a = $('header').outerHeight(true);
+			var b = $('footer').outerHeight(true);
+			var d = $('.login').outerHeight(true);
+			var c = $(window).height();
+			$('.login').css('margin-top',(c-b-a-d)/2+'px');
+		</script>
+        
+        <script>
+        	function find2(){
+				var mobile=$('#mobile').val();
+				var password=$('#password').val();
+				var password2=$('#password2').val();
+				
+				
+				if(password ==''){
+					layer.msg('请输入新密码！', {time: 1500});
+					return false;
+				}
+				if(password2 ==''){
+					layer.msg('请输入确认密码！', {time: 1500});
+					return false;
+				}
+				if(password != password2){
+					layer.msg('两次输入的密码不一致！', {time: 1500});
+					return false;
+				}
+			
+				
+				$.ajax({
+						url: "{:url('user/find2')}",
+						type:"POST",
+						data:{mobile:mobile,password:password},
+						//,sex:sex,mobile:mobile,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg(data.msg, {time: 1500});
+								window.location.href="{:url('user/login')}";
+							}else{
+								layer.msg(data.msg, {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+	</body>
+</html>

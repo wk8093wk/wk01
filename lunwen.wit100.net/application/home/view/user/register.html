@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>注册</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body>
+		<header class="on">
+			<div class="header_center">
+
+				<h1>
+					<a href="/"><img src="__HOMEIMG__/biao.png"/></a>
+				</h1>
+
+			</div>
+		</header>
+		
+		<div class="login">
+			<div class="pic">
+				<img src="__HOMEIMG__/login.png"/>
+			</div>
+			<div class="windowbox">
+				<h3>注册</h3>
+				<div class="tab_content">
+                <form>
+					<div class="tab_zi">
+						<div class="item">
+							<div class="infos">
+								<input type="text" name="mobile" id="mobile" value="" class="text3" placeholder="手机号" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="item">
+							<div class="infos">
+								<input type="text" name="" id="verification" value="" class="text4" placeholder="输入验证码" onBlur="code()"/>
+                                <input type="hidden" id="yzm" value="0"/>
+								<input type="button" id="" value="发送验证码" class="yan" onClick="send()" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="item">
+							<div class="infos">
+								<input type="password" name="password" id="password" value="" class="text3" placeholder="输入密码" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="item">
+							<div class="infos">
+								<input type="password" name="password2" id="password2" value="" class="text3" placeholder="确认密码" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<label for="checkbox1" class="label">
+							<input type="checkbox" name="checkbox1" id="checkbox1" value="" class="checkedbox" />
+							同意 <span style="cursor:pointer; color:blue;">《用户协议》</span>
+						</label>
+                        
+						<input type="button" id="" name="" value="注册" class="btns" onClick="zhuce()" />
+                        <input type="hidden" name="id" id="id" value="{$id}">
+					</div>
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+        	{include file="public/footeron" /}
+         
+         <div class="bgsss" style="position:absolute; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); display:none"></div>
+         
+         <div class="xieyi" style="position:absolute; top:20%; width:60%; left:50%; margin-left:-30%; background-color:#FFFFFF; min-height:300px; padding-bottom:30px; display:none">
+         	<h3 style="text-align:center; font-size:20px; margin:60px 0 16px">用户协议</h3>
+            <div style="width:90%; margin:auto">
+            	<p > {$config.xieyi|raw}</p>
+            </div>
+            <img class='clisebox' src="__HOMEIMG__/close.png" style="position:absolute; top:20px; width:37px; right:10px" >
+         </div>   
+         
+        
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+        <script>
+        	var countdown = 60;
+			var obj = $(".yan");
+		
+			function settime() { //发送验证码倒计时
+				var mobile=$('#mobile').val();
+				
+				if(!(/^1[3456789]\d{9}$/.test(mobile))){ 
+					layer.msg('手机号码格式有误，请重填！', {time: 1500});
+					return false; 
+				} 
+				if(countdown == 0) {
+					obj.val("获取验证码");
+					obj.css('pointer-events', 'auto');
+					countdown = 60;
+					return;
+				} else {
+					obj.val("重新发送(" + countdown + ")s");
+					countdown--;
+		
+					obj.css('pointer-events', 'none');
+				}
+		
+				setTimeout(function() {
+					settime();
+				}, 1000)
+			}
+		
+			$(".yan").click(function() {
+				settime();
+			})
+        </script>
+        <script>
+        	function zhuce(){
+				
+				var id=$('#id').val();
+				var mobile=$('#mobile').val();
+				var password=$('#password').val();
+				var password2=$('#password2').val();
+				var yzm=$('#yzm').val();
+				
+				if(password ==''){
+					layer.msg('请输入注册密码！', {time: 1500});
+					return false;
+				}
+				if(password != password2){
+					layer.msg('两次输入的密码不一致！', {time: 1500});
+					return false;
+				}
+				
+				if($('#checkbox1').is(':checked')) {
+				}else{
+					layer.msg('请阅读条款并同意！', {time: 1500});
+					return false;
+				}
+				if(yzm == 0){
+					layer.msg('验证码有误，请重试！', {time: 1500});
+					return false;
+				}
+				
+				
+				$.ajax({
+						url: "{:url('user/zhuce')}",
+						type:"POST",
+						data:{mobile:mobile,password:password},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('注册成功！', {time: 1500},function(){
+									window.location.href="/home/user/login.html";
+								});
+							}else if(data.code==3){
+								layer.msg('注册成功！', {time: 1500},function(){
+									window.location.href="/home/user/login.html?id="+id;
+								});
+							}else{
+								layer.msg('注册失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        <script>
+        	function send(){
+				var mobile=$('#mobile').val();
+				if(mobile ==''){
+					layer.msg('请输入手机号/邮箱！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/sendmobile')}",
+						type:"POST",
+						data:{mobile:mobile},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							var obj = eval('(' + data + ')');
+							console.log(obj);
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+							}else if(obj.code==1){
+								layer.msg(obj.msg, {time: 1500});
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+								return false;
+							}
+					   }
+			 	});
+			}
+        </script>
+        <script>
+        	function code(){
+				var verification=$('#verification').val();
+				var mobile=$('#mobile').val();
+				if(verification ==''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/checkmobile')}",
+						type:"POST",
+						data:{mobile:mobile,verification:verification},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							console.log(data);
+							var obj = eval('(' + data + ')');
+							
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('#yzm').val(1);
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+							}
+					   }
+			 	});
+			}
+        </script>
+		
+        <script>
+        
+		$('.login .label').click(function(){
+			if($(this).find('.checkedbox').prop('checked')==true){
+				
+			}else{
+				$('.bgsss,.xieyi').fadeIn();
+			}
+			
+		})
+		
+		$('.clisebox').click(function(){
+			$('.bgsss,.xieyi').fadeOut();
+		})
+		
+		
+		$(".checkedbox").on("click",function(event){
+		event.stopPropagation();
+		});
+        </script>        
+    
+	</body>
+</html>

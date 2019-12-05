@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">编辑管理员信息</div>
+                <div class="layui-card-body" pad15="">
+                    <div class="layui-form" wid100="" lay-filter="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户手机号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="user_name" lay-verify="required" value="{$info.user_name}" placeholder="请输入用户名" autocomplete="off" class="layui-input" readonly>
+                            </div>
+                        </div>
+                       {if $info.admin_id==17}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password"  value="" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">如果不修改密码请留空</div>
+                        </div>
+                       {/if}
+                        
+                        {if $info.admin_id!=17}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">管理员类型</label>
+                            <div class="layui-input-inline">
+                              <select name="role_id" id="role_id"  lay-filter="brickType">
+                                
+                                {volist name="role_list" id="vo"} 
+                              	
+                                 {if $vo.role_id>1} 
+                                  <option value="{$vo.role_id}" {if $vo.role_id eq $info.role_id}selected=""{/if}>{$vo.role_name}</option>
+                                 {/if}
+                                
+                                {/volist}
+                               
+                              </select>
+                            </div>
+                         
+                            
+                            
+                             <div class="layui-input-inline" {if  $info.role_id==3}style="display:none"{/if} id="sssw">
+                              <select name="role_ids"  id="role_ids" id="role_ids" >
+                              	 {volist name="role_lists" id="vo"} 	
+                                 	 <option value="{$vo.role_id}" {if $vo.role_id==$info.role_ids}selected{/if}>{$vo.role_name}</option>
+                                 {/volist}
+                              </select>
+                            </div>
+                            
+                          
+                        </div>
+                        {/if}  
+                        
+                        
+                        
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="hidden" value="{$info.admin_id}" name="admin_id">
+                                <button class="layui-btn" lay-submit="" lay-filter="edit-but">确认保存</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|禁用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+	<script type="text/html" id="action">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','users']);
+	</script>
+</body>
+</html>

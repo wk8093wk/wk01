@@ -1,0 +1,58 @@
+
+		<header>
+			<div class="header_center">
+            
+            
+            
+				<div class="surface   {if $user_id}on{/if} ">
+                
+                	
+                    
+					<a href="{:url('user/login')}">登录</a>
+					<a href="{:url('user/register')}">注册</a>
+                    
+					<!--登录后的样式-->
+                    
+                    
+					<div class="after_login">
+						{$info.mobile}
+					</div>
+					<div class="abox">
+						<a href="/home/user/gerenshezhi.html?id={$user_id}">个人设置</a>
+						<a href="/home/user/anquanshezhi.html?id={$user_id}">安全设置</a>
+						<a href="{:url('user/out')}">退出登录</a>
+					</div>
+                    
+                    
+                    
+					<div class="clear"></div>
+				</div>
+				<h1>
+					<a href="/"><img src="{$config.seo_logo}"/></a>
+				</h1>
+				<div class="search">
+					<input class="text" type="text" name="key" id="key" value="" placeholder="" />
+					<input class="btn" type="button" id="" value="" onclick="searchall()"/>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</header>
+        
+        <script>
+			function searchall(){
+				var key = $('#key').val();
+				
+					if(key=='')
+					{
+						layer.msg('请输入要搜索的关键字！', {time: 1500});
+						return false;
+					}
+				window.location.href = "{:url('search/search')}?key="+key;
+				
+			}
+       </script>
+
+		
+        
+	

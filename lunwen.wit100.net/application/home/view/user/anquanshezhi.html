@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>安全设置</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+    
+		{include file="public/header" /}
+		
+		<div class="security">
+			<h3>安全设置</h3>
+			<div class="coner">
+				<div class="name">
+					手机绑定
+				</div>
+				<div class="forbox">
+					<input type="text" id="mobile" name="mobile" value="{$rawaq.mobile}" class="text2" readonly>
+					<div class="replacebox" id="phone">
+						更换手机号
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="coner">
+				<div class="name">
+					邮箱绑定
+				</div>
+				<div class="forbox">
+					<input type="text" id="" value="{$rawaq.email}" class="text2" readonly>
+					<div class="replacebox" id="bangding">
+						立即绑定
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="coner">
+				<div class="name">
+					登陆密码
+				</div>
+				<div class="forbox">
+					<input type="password" name="" class="text2" readonly />
+					<div class="replacebox" id="xiugai">
+						修改密码
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!--背景-->
+		<div class="bgbox"></div>
+		
+		<!--手机号的-->
+		<div class="tanboxs modebox">
+			<div class="close">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<h3>更换手机号</h3>
+			<p>
+				请选择验证方式
+			</p>
+			<div class="tabs">
+				<div class="tab">
+					<a href="javascript:;" class="on">手机验证</a>
+					<a href="javascript:;">邮箱验证</a>
+					<a href="javascript:;">密码验证</a>
+				</div>
+			</div>
+			<div class="tabcontent">
+				<div class="tabc">
+					<h4 style="display:none;">已给您的手机{$str}发送验证码</h4>
+					<div class="itembox">
+						<span>验证码</span>
+						<div class="infosbox">
+							<input type="text" name="" id="verification" value="" class="text" onBlur="code()"/>
+							<input type="button" id="" value="发送验证码" class="btn" onClick="send()" />
+							<div class="clear"></div>
+						</div>
+						
+                        <input type="button" value="下一步"  data-xia = "mobilebox" class="down_box on" disabled />
+					</div>
+				</div>
+				<div class="tabc email">
+					<div class="itembox">
+						<span>邮箱号</span>
+						<div class="infosbox">
+							<input type="text" name="email1" id="email1" value="" class="text2" />
+						</div>
+					</div>
+					<div class="itembox">
+						<span>验证码</span>
+						<div class="infosbox">
+							<input type="text" name="emailcode1" id="emailcode1" value="" class="text" onBlur="emailcode01()"/>
+							<input type="button" id="" value="发送验证码" class="btn" onClick="emailsend1()" />
+							<div class="clear"></div>
+						</div>
+						
+                        
+                        <input type="button" value="下一步"  data-xia = "mobilebox" class="down_box on" disabled />
+                        
+					</div>
+					
+				</div>
+				<div class="tabc mima">
+					<div class="itembox">
+						<span>原密码</span>
+						<div class="infosbox">
+							<input type="text" name="yuanpassword" id="yuanpassword" value="" class="text2" onBlur="yuanpassword()" />
+						</div>
+					</div>
+                        <input type="button"  data-xia = "mobilebox" id="" value="下一步" class="down_box on" disabled />
+						
+				</div>
+			</div>
+			
+		</div>
+		
+		<!--更换手机号-->
+		<div class="tanboxs mobilebox">
+			<div class="close">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<h3>更换手机号</h3>
+			<div class="icobox">
+				<div class="name">
+					新手机号
+				</div>
+				<div class="inbox">
+					<input type="text" id="mobiles" name="mobiles" value="" class="text" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="icobox">
+				<div class="name">
+					验证码
+				</div>
+				<div class="inbox">
+					<input type="text" id="verifications" value="" class="text2" onBlur="codes()"/>
+					<input type="button" id="" value="发送验证码" class="btn" onClick="sends()" />
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+            <input type="hidden" value="{$user_id}" id="user_id" />
+            <input type="button" value="确定" class="down_box" onClick="alter()" disabled />
+		</div>
+		
+		<!--绑定邮箱-->
+		<div class="tanboxs emailebox">
+			<div class="close">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<h3>绑定邮箱</h3>
+			<div class="icobox">
+				<div class="name">
+					邮箱号
+				</div>
+				<div class="inbox">
+					<input type="text" name="email0" id="email0" value="" class="text" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="icobox">
+				<div class="name">
+					验证码
+				</div>
+				<div class="inbox">
+					<input type="text" name="emailcode0" id="emailcode0" value="" class="text2"  />
+					<input type="button" id="" value="发送验证码" class="btn" onClick="emailsend0()" />
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+            <input type="button" value="确定" class="down_box" onClick="emailcode00()" />
+		</div>
+		
+		<!--更换密码-->
+		<div class="tanboxs passwordbox">
+			<div class="close">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<h3>更换密码</h3>
+			<div class="icobox">
+				<div class="name">
+					新密码
+				</div>
+				<div class="inbox">
+					<input  type="password" id="xinpassword1" name="xinpassword1" value="" class="text" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="icobox">
+				<div class="name">
+					确认新密码
+				</div>
+				<div class="inbox">
+					<input type="password" id="xinpassword2" name="xinpassword2" value="" class="text" />
+                    <input type="hidden" name="user_id" id="user_id" value="{$user_id}">
+				</div>
+				<div class="clear"></div>
+			</div>
+            <input type="button" id="" name="" value="确定" class="down_box"  onClick="gai()"/>
+            
+		</div>
+		
+		
+		<!--修改密码的-->
+		<div class="tanboxs xiugaimima">
+			<div class="close">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<h3>修改密码</h3>
+			<p>
+				请选择验证方式
+			</p>
+			<div class="tabs">
+				<div class="tab">
+					<a href="javascript:;" class="on">手机验证</a>
+					<a href="javascript:;">邮箱验证</a>
+					<a href="javascript:;">密码验证</a>
+				</div>
+			</div>
+			<div class="tabcontent">
+				<div class="tabc">
+					<h4 style="display:none;">已给您的手机{$str}发送验证码</h4>
+					<div class="itembox">
+						<span>验证码</span>
+						<div class="infosbox">
+							<input type="text" name="" id="verificationnew" value="" class="text" onBlur="codenew()" />
+							<input type="button" id="" value="发送验证码" class="btn" onClick="sendnew()" />
+							<div class="clear"></div>
+						</div>
+						
+                        <input type="button" value="下一步"  data-xia = "passwordbox" class="down_box on" disabled />
+					</div>
+				</div>
+				<div class="tabc email">
+					<div class="itembox">
+						<span>邮箱号</span>
+						<div class="infosbox">
+							<input type="text" name="email2" id="email2" value="" class="text2" />
+						</div>
+					</div>
+					<div class="itembox">
+						<span>验证码</span>
+						<div class="infosbox">
+							<input type="text" name="emailcode2" id="emailcode2" value="" class="text" onBlur="emailcode02()" />
+							<input type="button" id="" value="发送验证码" class="btn" onClick="emailsend2()" />
+							<div class="clear"></div>
+						</div>
+						
+                        <input type="button" value="下一步"  data-xia = "passwordbox" class="down_box on" disabled />
+                        
+                        
+					</div>
+					
+				</div>
+				<div class="tabc mima2">
+					<div class="itembox">
+						<span>原密码</span>
+						<div class="infosbox">
+							<input type="text" name="yuanpassword2" id="yuanpassword2" value="" class="text2" onBlur="yuanpassword2()"  />
+						</div>
+					</div>
+					
+						<input type="button" data-xia = "passwordbox"  id="" value="下一步" class="down_box on" disabled />
+				
+				</div>
+                
+                
+ 
+			</div>
+			
+		</div>
+		
+			{include file="public/footeron" /}
+            
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+		<script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+        <script>
+        	function send(){
+				var mobile=$('#mobile').val();
+				console.log(mobile);
+				$.ajax({
+						url: "{:url('user/anquanmobile2')}",
+						type:"POST",
+						data:{mobile:mobile,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							var obj = eval('(' + data + ')');
+							console.log(obj);
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tabcontent .tanboxs h4').css('display','block');
+							}else if(obj.code==1){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').attr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+								return false;
+							}
+					   }
+			 	});
+			}
+        </script>
+        <script>
+        	function code(){
+				var verification=$('#verification').val();
+				var mobile=$('#mobile').val();
+				if(verification ==''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/anquancheck')}",
+						type:"POST",
+						data:{mobile:mobile,verification:verification,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							console.log(data);
+							var obj = eval('(' + data + ')');
+							
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').removeAttr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+							}
+					   }
+			 	});
+			}
+        </script>
+        
+        <script>
+			//新手机号
+        	function sends(){
+				var mobile=$('#mobiles').val();
+				if(mobile==''){ 
+					layer.msg('请填写手机号码！', {time: 1500});
+					return false; 
+				}
+				 if(!(/^1[3456789]\d{9}$/.test(mobile))){ 
+					layer.msg('手机号码格式有误，请重填！', {time: 1500});
+					return false; 
+				} 
+				
+				$.ajax({
+						url: "{:url('user/anquanmobile')}",
+						type:"POST",
+						data:{mobile:mobile,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							var obj = eval('(' + data + ')');
+							console.log(obj);
+							if(obj.code==2){
+								layer.msg(obj.msg, {time: 1500});
+								return false;
+							}else if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tabcontent .tanboxs h4').css('display','block');
+							}else if(obj.code==1){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').attr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+								return false;
+							}
+							
+					   }
+			 	});
+			}
+        </script>
+        <script>
+			//新手机号验证
+        	function codes(){
+				var verification=$('#verifications').val();
+				var mobile=$('#mobiles').val();
+				if(verification ==''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/anquancheck')}",
+						type:"POST",
+						data:{mobile:mobile,verification:verification,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							console.log(data);
+							var obj = eval('(' + data + ')');
+							
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').removeAttr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+							}
+					   }
+			 	});
+			}
+        </script>
+        
+        <script>
+			//修改密码发送短信
+        	function sendnew(){
+				var mobile=$('#mobile').val();
+				
+				
+				$.ajax({
+						url: "{:url('user/anquanmobile2')}",
+						type:"POST",
+						data:{mobile:mobile,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							var obj = eval('(' + data + ')');
+							console.log(obj);
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tabcontent .tanboxs h4').css('display','block');
+							}else if(obj.code==1){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').attr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+								return false;
+							}
+					   }
+			 	});
+			}
+        </script>
+        <script>
+			//修改密码验证短信
+        	function codenew(){
+				var verification=$('#verificationnew').val();
+				var mobile=$('#mobiles').val();
+				if(verification ==''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/anquancheck')}",
+						type:"POST",
+						data:{mobile:mobile,verification:verification,type:4},
+						//,sex:sex,mobile:mobile,
+						//dataType:"",
+						success: function(data){
+							console.log(data);
+							var obj = eval('(' + data + ')');
+							
+							if(obj.code==0){
+								layer.msg(obj.msg, {time: 1500});
+								$('.tanboxs .down_box').removeAttr('disabled');
+							}else{
+								layer.msg(obj.msg, {time: 1500});
+							}
+					   }
+			 	});
+			}
+        </script>
+        
+        <script>
+        	function alter(){
+				var mobile=$('#mobiles').val();
+				var user_id=$('#user_id').val();
+				
+				if(mobile==''){ 
+					layer.msg('请填写手机号码！', {time: 1500});
+					return false; 
+				}
+				 if(!(/^1[3456789]\d{9}$/.test(mobile))){ 
+					layer.msg('手机号码格式有误，请重填！', {time: 1500});
+					return false; 
+				} 
+				$.ajax({
+					url: "{:url('user/altermobile')}",
+					type:"POST",
+					data:{mobile:mobile,user_id:user_id},
+					success: function(data){
+						console.log(data);
+						var obj = eval('(' + data + ')');
+						if(obj.code==0){
+							layer.msg(obj.msg, {time: 1500});
+							$('.tanboxs').hide();
+							$('.bgbox').fadeOut();
+						}else{
+							layer.msg(obj.msg, {time: 1500});
+						}
+				   }
+			 	});
+			}
+        </script>
+		<script>
+			//手机好
+			$('#phone').on('click',function(){
+				
+				$('.bgbox').fadeIn();
+				$('.modebox').show();
+				
+				
+			})
+			
+			//邮箱
+			$('#bangding').on('click',function(){
+				
+				$('.bgbox').fadeIn();
+				$('.emailebox').show();
+				
+				
+			})
+			
+			//修改密码
+			$('#xiugai').on('click',function(){
+				
+				$('.bgbox').fadeIn();
+				$('.xiugaimima').show();
+				
+			})
+			
+			//下一步 手机号
+			$('.down_box.on').on('click',function(){
+				$(this).parents('.tanboxs').hide();
+				var fang = $(this).data('xia');
+				$('.'+fang).show();
+				
+			});
+			
+			
+			$('.tanboxs .close').on('click',function(){
+				
+				$('.tanboxs').hide();
+				$('.bgbox').fadeOut();
+				
+			})
+			
+			
+		</script>
+		<script>
+			
+			$('.tabcontent').each(function(i){
+				$(this).find('.tabc').not($(this).find('.tabc').eq(0).show()).hide();
+			})
+			
+			$('.tab').each(function(){
+				
+				$(this).find('a').on('click',function(){
+					$(this).addClass('on').siblings('a').removeClass('on');
+					ids = $(this).index('.tanboxs .tab a');
+					$('.tabc').eq(ids).show().siblings().hide();
+				})
+				
+			})
+			/*$('.tanboxs .tab a').on('click',function(){
+				$(this).addClass('on').siblings('a').removeClass('on');
+				ids = $(this).index('.tanboxs .tab a');
+				$('.tabc').eq(ids).show().siblings().hide();
+			})*/
+		</script>
+		
+		<script>
+			
+			
+		
+			var countdown = 60;
+			var obj = $('.modebox .btn');
+		
+			function settime() { //发送验证码倒计时
+		
+				if(countdown == 0) {
+					obj.val("获取验证码");
+					obj.css('pointer-events', 'auto');
+					countdown = 60;
+					return;
+				} else {
+					obj.val("重新发送(" + countdown + ")s");
+					countdown--;
+		
+					obj.css('pointer-events', 'none');
+				}
+		
+				var timer = setTimeout(function() {
+					settime();
+				}, 1000)
+			}
+
+			//更换手机号
+			$(".modebox .btn").click(function() {
+
+				settime();
+			})
+			
+			
+			
+			var countdown02 = 60;
+			var obj02 = $('.xiugaimima .btn');
+		
+			function settime02() { //发送验证码倒计时
+		
+				if(countdown02 == 0) {
+					obj02.val("获取验证码");
+					obj02.css('pointer-events', 'auto');
+					countdown02 = 60;
+					return;
+				} else {
+					obj02.val("重新发送(" + countdown02 + ")s");
+					countdown02--;
+		
+					obj02.css('pointer-events', 'none');
+				}
+		
+				var timer = setTimeout(function() {
+					settime02();
+				}, 1000)
+			}
+			
+			//修改密码
+			$(".xiugaimima .btn").click(function() {
+				settime02();
+			})
+
+		</script>
+        
+        
+        
+        
+        
+        <script>
+        	function gai(){
+				var user_id=$('#user_id').val();
+				var password=$('#xinpassword1').val();
+				var password2=$('#xinpassword2').val();
+					
+				if(password == ''){
+					layer.msg('请输入新密码！', {time: 1500});
+					return false;
+				}	
+				if(password != password2){
+					layer.msg('两次输入的密码不一致！', {time: 1500});
+					return false;
+				}
+				$.ajax({
+						url: "{:url('user/gai')}",
+						type:"POST",
+						data:{user_id:user_id,password:password},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('修改成功,请重新登录!', {time: 1500});
+								window.location.href="/Home/User/out.html";
+							}else if(data.code==2){
+								layer.msg('新密码不能与原密码相同！', {time: 1500});
+							}else{
+								layer.msg('修改失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+        
+         <script>
+        	function yuanpassword(){
+				var user_id=$('#user_id').val();
+				var password=$('#yuanpassword').val();
+					
+				if(password == ''){
+					layer.msg('请输入原密码！', {time: 1500});
+					return false;
+				}	
+				
+				$.ajax({
+						url: "{:url('user/yuanpassword')}",
+						type:"POST",
+						data:{user_id:user_id,password:password},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('原密码验证成功！', {time: 1500});
+								$('.tabc.mima .down_box').removeAttr('disabled');
+							}else{
+								layer.msg('原密码不正确！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+                 <script>
+        	function yuanpassword2(){
+				var user_id=$('#user_id').val();
+				var password=$('#yuanpassword2').val();
+					
+				if(password == ''){
+					layer.msg('请输入原密码！', {time: 1500});
+					return false;
+				}	
+				
+				$.ajax({
+						url: "{:url('user/yuanpassword2')}",
+						type:"POST",
+						data:{user_id:user_id,password:password},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('原密码验证成功！', {time: 1500});
+								$('.tabc.mima2 .down_box').removeAttr('disabled');
+							}else{
+								layer.msg('原密码不正确！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+        
+        
+                
+         <script>
+        	function emailsend0(){
+				var user_id=$('#user_id').val();
+				var email=$('#email0').val();
+				
+				if(email==''){ 
+					layer.msg('请填写邮箱！', {time: 1500});
+					return false; 
+				}
+				 if(!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(email))){
+					layer.msg('邮箱格式有误，请重填！', {time: 1500});
+					return false;
+				}
+			
+				
+				$.ajax({
+						url: "{:url('user/emailsend0')}",
+						type:"POST",
+						data:{user_id:user_id,email:email},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							//var datas = eval('(' + data + ')');
+							if(data.code=='0'){
+								layer.msg('验证码发送成功！', {time: 3500});
+								
+							}else{
+								layer.msg('验证码发送失败！', {time: 3500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+         <script>
+        	function emailsend1(){
+				var user_id=$('#user_id').val();
+				var email=$('#email1').val();
+				
+					
+				if(email==''){ 
+					layer.msg('请填写邮箱！', {time: 1500});
+					return false; 
+				}
+				 if(!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(email))){
+					layer.msg('邮箱格式有误，请重填！', {time: 1500});
+					return false;
+				}
+			
+				
+				$.ajax({
+						url: "{:url('user/emailsend1')}",
+						type:"POST",
+						data:{user_id:user_id,email:email},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('邮箱验证成功！', {time: 1500});
+								
+							}else{
+								layer.msg('邮箱验证失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+       <script>
+        	function emailsend2(){
+				var user_id=$('#user_id').val();
+				var email=$('#email2').val();
+				
+					
+				if(email==''){ 
+					layer.msg('请填写邮箱！', {time: 1500});
+					return false; 
+				}
+				 if(!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(email))){
+					layer.msg('邮箱格式有误，请重填！', {time: 1500});
+					return false;
+				}
+			
+				
+				$.ajax({
+						url: "{:url('user/emailsend2')}",
+						type:"POST",
+						data:{user_id:user_id,email:email},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('邮箱验证成功！', {time: 1500});
+								
+							}else{
+								layer.msg('邮箱验证失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+         <script>
+        	function emailcode00(){
+				var user_id=$('#user_id').val();
+				var code=$('#emailcode0').val();
+				var email=$('#email0').val();
+				
+				
+				if(code == ''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/emailcode0')}",
+						type:"POST",
+						data:{user_id:user_id,code:code,email:email},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('验证成功！', {time: 1500});
+								window.location.href="/Home/User/anquanshezhi.html";
+							}else{
+								layer.msg('验证失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+          <script>
+        	function emailcode01(){
+				var user_id=$('#user_id').val();
+				var code=$('#emailcode1').val();
+				
+				if(code == ''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/emailcode1')}",
+						type:"POST",
+						data:{user_id:user_id,code:code},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('验证成功！', {time: 1500});
+								$('.tabc.email .down_box').removeAttr('disabled');
+							}else{
+								layer.msg('验证失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+                
+          <script>
+        	function emailcode02(){
+				var user_id=$('#user_id').val();
+				var code=$('#emailcode2').val();
+				
+				if(code == ''){
+					layer.msg('请输入验证码！', {time: 1500});
+					return false;
+				}
+				
+				$.ajax({
+						url: "{:url('user/emailcode2')}",
+						type:"POST",
+						data:{user_id:user_id,code:code},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('验证成功！', {time: 1500});
+								$('.tabc.email .down_box').removeAttr('disabled');
+							}else{
+								layer.msg('验证失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+	</body>
+</html>

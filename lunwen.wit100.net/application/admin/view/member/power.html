@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>权限分配</title>
+<meta name="robots" content="noindex, nofollow">
+
+	<link rel="stylesheet" href="__ADMINCSS__/main2.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+ 		<script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+</head>
+
+<body class="iframe_body">
+	<div class="warpper">
+    	<div class="title"><a href="javascript:;" ectype="goback" class="s-back"></a>权限设置</div>
+        <div class="content">
+        	<div class="explanation" id="explanation">
+            	<div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+                <ul>
+                	<li>该页面展示商城所有功能权限。</li>
+                    <li>打钩即是分配权限，请谨慎操作。</li>
+                    <li>初始化是基本功能权限。</li>
+                </ul>
+            </div>
+            <div class="flexilist">
+                <div class="common-content">
+                    <div class="mian-info">
+                   <form method="POST" action="" name="theFrom" id="privilege_frm">
+                     <input type="hidden" name="role_id" value="{$detail.role_id}"  />
+                     <div class="switch_info business_info" style="background:none;">
+                       {volist name="menus" id="voo"}
+                       
+                       {if $voo.title}
+                        <div class="step">
+                            	<div class="tit">
+                                    <div class="checkbox_items">
+                                    	<div class="checkbox_item">
+                                            <input type="checkbox" name="chkGroup[]" value="{$voo.id}" class="ui-checkbox" id="chkGroup[]_{$voo.id}" {if in_array($voo.id,$act_list_on)}checked="checked"{/if}>
+                                            <label for="chkGroup[]_{$voo.id}" class="ui-label blod">{$voo.title}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="qx_items">
+                                	<div class="qx_item">
+                                        <div class="checkbox_items">
+                                        {volist name="voo.children" id="vooo" key="k"}
+                                         {if $vooo.title}
+                                           <div class="checkbox_item">
+                                                <input type="checkbox" value="{$vooo.id}" name="action_code[]" class="ui-checkbox" id="goods_manage_{$vooo.id}" date="goods" title="" {if in_array($vooo.id,$act_list_on)}checked="checked"{/if}>
+                                                <label for="goods_manage_{$vooo.id}" class="ui-label">{$vooo.title}</label>
+                                            </div>
+                                          {/if}
+                                        {/volist}                                              
+                                       </div>
+                                    </div>
+                                </div>
+                        </div>
+                         {/if}
+                        
+                        
+                    {/volist}                                                                                         
+                        <div class="steplast">
+                            	<div class="checkbox_items">
+                                	<div class="checkbox_item">
+                                    	<input type="checkbox" name="checkall" value="checkbox" class="ui-checkbox" id="checkall">
+                                        <label for="checkall" class="ui-label">全选</label>
+                                    </div>
+                                </div>
+                                <div class="info_btn">
+                                    <input type="submit" value=" 保存 " class="button">
+                                    <input type="hidden" name="id" value="59">
+                                    <input type="hidden" name="token" value="c49edab224d09de5d24e1bcdf9a18508322868ca44f62506af25f77b45af4e5b">
+                                    <input type="hidden" name="act" value="update_allot">
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script language="javascript">
+	$("#checkall").click(function(){
+		var checkbox = $(this).parents(".switch_info").find('input:checkbox[type="checkbox"]');
+		if($(this).prop("checked") == true){
+			checkbox.prop("checked",true);
+		}else{
+			checkbox.prop("checked",false);
+		}
+	});
+	
+	$("input[name='chkGroup[]']").click(function(){
+		var checkbox = $(this).parents(".tit").next(".qx_items").find('input:checkbox[type="checkbox"]');
+		if($(this).prop("checked") == true){
+			checkbox.prop("checked",true);
+		}else{
+			checkbox.prop("checked",false);
+		}
+	});
+	
+	$("input[name='action_code[]']").click(function(){    
+		var qx_items = $(this).parents(".qx_items");
+		var length = qx_items.find("input[name='action_code[]']").length;
+		var length2 =  qx_items.find("input[name='action_code[]']:checked").length;
+		if(length2>0){
+			qx_items.prev().find("input[name='chkGroup[]']").prop("checked",true);
+		}else{
+			qx_items.prev().find("input[name='chkGroup[]']").prop("checked",false);
+		}
+	});
+	
+	$(".qx_items").each(function(index, element) {
+		var length = $(this).find("input[name='action_code[]']").length;
+		var length2 = $(this).find("input[name='action_code[]']:checked").length;
+		
+		if(length2!=0){
+			$(this).prev().find("input[name='chkGroup[]']").prop("checked",true);
+		}else{
+			$(this).prev().find("input[name='chkGroup[]']").prop("checked",false);
+		}
+	});
+    </script>
+
+<div></div>
+</body>
+</html>

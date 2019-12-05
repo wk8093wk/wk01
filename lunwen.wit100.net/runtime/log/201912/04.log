@@ -1,0 +1,406 @@
+---------------------------------------------------------------
+[2019-12-04T11:24:46+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000630s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001595s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000575s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001293s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001150s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000372s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000442s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001427s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000573s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000369s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:46+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000503s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001796s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001227s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001334s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001225s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001117s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000384s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:47+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000684s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001647s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000612s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001445s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000464s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001327s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000425s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000422s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001510s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000620s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000338s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:47+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000528s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001812s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000597s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001516s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001540s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001426s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001368s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000393s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:47+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001741s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001488s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001290s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000433s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001409s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000634s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000402s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000342s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000566s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001480s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001263s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001276s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001295s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001262s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000364s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000523s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001427s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001242s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001138s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000438s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001320s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000580s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000340s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000336s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000561s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001506s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001241s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001293s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001292s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001166s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000531s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001577s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000569s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001512s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001468s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000474s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000545s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001484s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000680s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000461s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000418s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000509s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001445s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001257s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001428s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001247s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.005523s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000471s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000413s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001238s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001429s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001292s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000357s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000408s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001191s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000542s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000374s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000272s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000478s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001443s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001224s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001172s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000333s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001253s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000544s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000340s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000297s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000720s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002721s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000883s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001303s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000442s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001374s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001417s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000419s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000530s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001550s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000481s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001160s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001168s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001185s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000563s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:48+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000601s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002043s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001686s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001710s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001610s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001570s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000511s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:49+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000490s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001595s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001267s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001268s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001245s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001165s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000376s ]
+---------------------------------------------------------------
+[2019-12-04T11:24:50+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/logout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000527s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002663s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.001149s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:06+08:00] 123.168.219.200 POST lunwen.wit100.net/admin/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000524s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001440s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `user_name` = 'admin' LIMIT 1 [ RunTime:0.000537s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `last_login` = 1575429906  WHERE  `admin_id` = 17 [ RunTime:0.002804s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:07+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000535s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001596s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000576s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001311s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001247s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000571s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001596s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000741s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000473s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000373s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:07+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000508s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001370s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001214s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001243s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001225s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001147s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000341s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:09+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/logout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000487s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001421s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000573s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:16+08:00] 123.168.219.200 POST lunwen.wit100.net/admin/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000503s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001399s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `user_name` = 'admin' LIMIT 1 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `last_login` = 1575429916  WHERE  `admin_id` = 17 [ RunTime:0.003479s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:18+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000515s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001441s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001213s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001112s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000333s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000360s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001265s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000600s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000352s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:18+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000400s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.000960s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001224s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001244s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001215s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001137s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000349s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:20+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/logout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000591s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001696s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000561s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:28+08:00] 123.168.219.200 POST lunwen.wit100.net/admin/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000606s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001764s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `user_name` = 'admin' LIMIT 1 [ RunTime:0.000618s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `last_login` = 1575429928  WHERE  `admin_id` = 17 [ RunTime:0.003044s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:29+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000681s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001811s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001554s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000467s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001485s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000481s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000491s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001652s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000718s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000459s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:32+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000514s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001496s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001254s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001345s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001259s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001190s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:33+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/logout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001522s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000517s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:40+08:00] 123.168.219.200 POST lunwen.wit100.net/admin/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000538s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001402s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `user_name` = 'admin' LIMIT 1 [ RunTime:0.000530s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `last_login` = 1575429940  WHERE  `admin_id` = 17 [ RunTime:0.002875s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:42+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001368s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.003294s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000948s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.002173s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000875s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001903s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000560s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000715s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001931s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000835s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000575s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000450s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:42+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000733s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.002198s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000716s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001759s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000551s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001752s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001729s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001521s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000463s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:43+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/logout.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000636s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001598s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000511s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:49+08:00] 123.168.219.200 POST lunwen.wit100.net/admin/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000542s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001475s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `user_name` = 'admin' LIMIT 1 [ RunTime:0.000548s ]
+[ sql ] [ SQL ] UPDATE `tp_admin`  SET `last_login` = 1575429949  WHERE  `admin_id` = 17 [ RunTime:0.002844s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:50+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/index/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000500s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001400s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin` [ RunTime:0.001149s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin` WHERE  `admin_id` = 17 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_admin_role` [ RunTime:0.001138s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` = 1 LIMIT 1 [ RunTime:0.000349s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000456s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_auth_rule` [ RunTime:0.001292s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_auth_rule` WHERE  ( menustatus=1 ) ORDER BY `sort` ASC [ RunTime:0.000596s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000394s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `tp_admin_role` WHERE  `role_id` IS NULL LIMIT 1 [ RunTime:0.000324s ]
+---------------------------------------------------------------
+[2019-12-04T11:25:50+08:00] 123.168.219.200 GET lunwen.wit100.net/admin/home/console.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000506s ] mysql:host=127.0.0.1;port=3306;dbname=lunwen_wit100_ne;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.001387s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` WHERE  `is_del` = 0 [ RunTime:0.000484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_news` [ RunTime:0.001129s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_news` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_meeting` [ RunTime:0.001186s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_meeting` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_user` [ RunTime:0.001148s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_user` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_paper` [ RunTime:0.001084s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tp_paper` WHERE  `is_delete` = 0 LIMIT 1 [ RunTime:0.000355s ]

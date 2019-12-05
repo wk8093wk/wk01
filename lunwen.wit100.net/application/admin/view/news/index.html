@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统设置</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="__STATIC__/layuiadmin/style/admin.css" media="all">
+  <script type="text/javascript" src="__ADMINJS__/jquery-1.9.1.min.js"></script>
+  
+</head>
+<body>
+
+  <div class="layui-fluid" id="LAY-app-message">
+    <div class="layui-card">
+        <div class="layui-card-header">新闻动态列表</div>
+        <div class="layui-card-body">
+        	
+         
+            <div class="table-head-btn" style="margin-bottom: 10px;">
+                <div class="layui-inline">
+                    <input class="layui-input" name="key" id="key" placeholder="请输入关键字" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
+                <button class="layui-btn" data-type="add">添加</button>
+                <button class="layui-btn layui-btn-danger" data-type="direct">删除</button>
+                
+                
+                <input type="hidden" value="{$type_id}" id="type_id"/>
+           
+			   <form class="layui-form" action="" style="margin-top:10px">
+                <div class="layui-input-inline">
+                  <select name="" id="big_type" lay-filter="test">
+                    <option value="0">选择类型</option>
+                    {foreach name="big_type_res" item="vo" key='k'}
+                    	 <option value="{$vo.group_id}" {if $big_type==$vo.group_id}selected{/if}>{$vo.name}</option>
+                    {/foreach}
+                  </select>
+                </div>   
+            </form>
+                
+            </div>
+            <table class="layui-hide" id="list" lay-filter="list"></table>
+        </div>
+    </div>
+  </div>
+  <script type="text/html" id="catname">
+    <a lay-href="/admin/news/news_annex.html?catid={{d.news_id}}" class="layui-table-link">{{d.name}}</a>
+   
+   </script>
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>  
+     <script type="text/html" id="status">
+    <input type="checkbox" name="status" value="{{d.news_id}}" lay-skin="switch" lay-text="已发布|已关闭" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+    <script type="text/html" id="onlygroup">
+    <input type="checkbox" name="onlygroup" value="{{d.news_id}}" lay-skin="switch" lay-text="是|否" lay-filter="onlygroup" {{ d.onlygroup == 1 ? 'checked' : '' }}>
+    </script>
+    <script type="text/html" id="turnon">
+    <input type="checkbox" name="turnon" value="{{d.news_id}}" lay-skin="switch" lay-text="是|否" lay-filter="turnon" {{ d.turnon == 1 ? 'checked' : '' }}>
+    </script>
+
+	<script type="text/html" id="action">
+		
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+	
+		var url='/admin/news/index_json?type_id={$big_type}';
+		
+		layui.config({
+			base: '__STATIC__/layuiadmin/',version: true    }).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index','news']);
+	</script>
+    
+ <script>
+    	function tourl(type_id){
+			var big_type=$('#big_type').val();
+			//console.log(big_type);
+			
+			location.href="/admin/arttype/arttype_type?type_id="+type_id+"&big_type="+big_type;
+		}
+		
+  </script>
+  
+</body>
+</html>

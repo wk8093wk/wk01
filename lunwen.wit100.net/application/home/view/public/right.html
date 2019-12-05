@@ -1,0 +1,175 @@
+			<div class="index_right">
+				<div class="calendar">
+					<div class="huibox">
+						<span>
+							会议日历
+						</span>
+					</div>
+					<div class="calendar_watch">
+						<div class="timebox">
+							<i class="left"></i>
+							<em>{$now_year}年</em>
+							<i class="right"></i>
+						</div>
+                        
+                        <input type="hidden" value="{$now_year}"  id="now_year"/>
+                        
+                        <input type="hidden" value="0"  id="now_year_p"/>
+						<ul id="she">
+							
+                            {foreach name="list_meeting" item='vo' key='k'}
+							<li>
+								<a href="/home/meeting/meeting_detail.html?id={$vo.meeting_id}">
+									<div class="item">
+										<div class="name">
+											会议时间
+										</div>
+										<div class="value"  style="color: #144593;">
+											{$vo.start_time}{$vo.end_time}
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="item">
+										<div class="name">
+											会议标题
+										</div>
+										<div class="value">
+											{$vo.name}
+										</div>
+										<div class="clear"></div>
+									</div>
+								</a>
+							</li>
+                           {/foreach}
+                            
+                            
+						</ul>
+						<div class="downup">
+							<a class="prev on" href="javascript:void(0);" onclick="prevp()">上一页</a>
+                            <a class="next on" href="javascript:void(0);" onclick="nextp()">下一页</a>
+						</div>
+					</div>
+				</div>
+                
+                <script>
+					function prevp(){
+						
+						var p=$('#now_year_p').val()-1;
+						var now_year=$('#now_year').val();
+						
+						
+
+						$.ajax({
+									url: "{:url('base/ajax_year_details')}",
+									type:"post",
+									data:{p:p,now_year:now_year},
+									dataType:"json",
+									success: function(data){
+										console.log(data);
+										
+										if(data.status==1){
+											
+											var htmlstr="";
+					
+											data.list.forEach(function(val,key){
+												htmlstr=htmlstr+'<li><a href="/home/meeting/meeting_detail.html?id='+val.meeting_id+'"><div class="item"><div class="name">会议时间</div><div class="value">'+val.start_time+val.end_time+'</div><div class="clear"></div></div><div class="item"><div class="name">会议标题</div><div class="value">'+	val.name+'</div><div class="clear"></div></div></a></li>';
+
+											});
+											
+											console.log(htmlstr);
+						
+											$('#she').html(htmlstr);
+											
+											$('#now_year_p').val(p);
+											
+										}else{
+											layer.msg(data.msg);
+										}
+										
+								   }
+						 });
+						
+						
+					}
+				
+				
+				
+                	function nextp(){
+						var p=$('#now_year_p').val()+1;
+						var now_year=$('#now_year').val();
+						
+						
+
+						$.ajax({
+									url: "{:url('base/ajax_year_details')}",
+									type:"post",
+									data:{p:p,now_year:now_year},
+									dataType:"json",
+									success: function(data){
+										console.log(data);
+										
+										if(data.status==1){
+											
+											var htmlstr="";
+					
+											data.list.forEach(function(val,key){
+												htmlstr=htmlstr+'<li><a href="/home/meeting/meeting_detail.html?id='+val.meeting_id+'"><div class="item"><div class="name">会议时间</div><div class="value">'+val.start_time+val.end_time+'</div><div class="clear"></div></div><div class="item"><div class="name">会议标题</div><div class="value">'+	val.name+'</div><div class="clear"></div></div></a></li>';
+
+											});
+											console.log(htmlstr);
+						
+											$('#she').html(htmlstr);
+											
+											$('#now_year_p').val(p);
+											
+										}else{
+											layer.msg(data.msg);
+										}
+										
+								   }
+						 });
+			
+						
+					}
+                
+                </script>
+                
+                
+                
+				<div class="columnbox">
+                
+                
+                	{foreach name="list6" item='vo' key='k'}
+					<a href="/home/group/group.html?id={$vo.group_id}"><h3>{$vo.name}</h3></a>
+					<div class="alist {if $k >= 3}on{/if}">
+                    	{foreach name="$vo.data" item='vovo' key='kk'}
+                        	<a href="/home/group/group.html?id={$vovo.group_id}">{$vovo.name}</a>
+						{/foreach}
+                     
+                    	<div class="clear"></div>
+                     
+                    </div>
+                    {/foreach}
+					
+					
+				</div>
+                
+                {foreach name="adv" item='vo' key='k'}
+				<div class="abox" {if $vo.thumb != ''} style="padding: 0px 0;"{/if}>
+					<a href="{$vo.link}" target="_blank">
+						 {if $vo.thumb != ''}
+                        	<img src="{$vo.thumb}"/>
+							
+                        {else}
+                        	<h4 style="margin-top: 0px;">{$vo.name}</h4>
+                            <p>{$vo.start_time}{$vo.end_time}</p>
+                        {/if}
+                        
+					</a>
+				</div>
+                {/foreach}
+                
+				
+                
+			</div>
+            <div class="clear"></div>

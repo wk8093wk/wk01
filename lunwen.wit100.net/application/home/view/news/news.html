@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>新闻动态</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+    
+		{include file="public/header" /}
+        
+       <div class="nav">
+			<ul>
+				<li>
+					<a href="{:url('index/index')}">
+						首页
+					</a>
+				</li>
+				<li class="on">
+					<a href="{:url('news/news')}">
+						新闻动态
+					</a>
+				</li>
+				<li>
+					<a href="{:url('meeting/meeting')}">
+						会议信息
+					</a>
+				</li>
+				<li>
+					<a href="{:url('project/project')}">
+						物理与工程
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!--与首页样式相同 单独修改本页 .news.index-->
+		<div class="index news">
+			<div class="index_left">
+				<div class="index_news">
+					<div class="titlebox">
+						<h3>新闻动态</h3>
+						<div class="clear"></div>
+					</div>
+					<ul>
+                    
+                    	{foreach name='list' item='vo' key='k'}
+						<li>
+							<a href="/home/news/news_detail.html?id={$vo.news_id}">
+                            	{if $vo.thumb != ''}
+								<div class="picer">
+									<img src="{$vo.thumb}"/>
+								</div>
+                                {/if}
+								<div {if $vo.thumb != ''}class="infos"{/if}>
+									<h4>{$vo.name}</h4>
+									<p>{$vo.content|raw|subtext=90}</p>
+									<div class="sign">
+                                    
+										{foreach name="$vo.group_arr" item='vovo' key='kk'}
+                                       {if $vovo!=""}
+										<div class="inverted" style="margin-right: 10px;">
+											{$vovo}
+										</div>
+                                        {/if}
+                                       {/foreach} 
+                                       
+										<div class="numbox">
+											
+											<div class="time">
+												{$vo.add_time}
+											</div>
+											<div class="time">
+												浏览：{$vo.click}
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</li>
+                        {/foreach}
+                        
+                        
+                     
+                        
+                        
+					</ul>
+					
+				</div>
+				<!--分页-->
+                
+				<div class="pageings">
+					<ul>
+						{$page|raw}
+						<li>
+							<div class="zong">
+								10条/页
+							</div>
+						</li>
+						<li>
+							<span>
+													跳至
+												</span>
+						</li>
+						<li>
+                            <input type="text" id="p" value="" class="text" />
+                            <input type="hidden" id="shu" value="{$shu}">
+						</li>
+						<li>
+							<span>
+													页
+												</span>
+						</li>
+                        <li>
+							<span>
+													<input type="button" id="" onClick="url()" value="跳转" class='zong pageings' style="margin-left: 0px;"/>
+												</span>
+						</li>
+					</ul>
+				</div>
+				<!--end-->
+			</div>
+			
+			{include file="public/right" /}
+            
+		</div>
+		
+        	{include file="public/footer" /}
+        
+		<script type="text/javascript" src="__HOMEJS__/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+        <script src="__STATIC__/layuiadmin/layer/layer.js"></script>
+        <script>
+        	function url(){
+				var p= $("#p").val();
+				var shu= $("#shu").val();
+				if(p > shu || p < 1){
+					layer.msg('请输入正确的页数', {time: 2000});
+				}else{
+					window.location.href = '/home/News/news/p/'+p+'.html';
+				}
+			}
+        </script>
+	</body>
+</html>

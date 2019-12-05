@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>会议详情</title>
+        <meta name="keywords" content="{$config.seo_keyword}" />
+		<meta name="description" content="{$config.seo_dec}" />
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/list.css"/>
+		<link rel="stylesheet" type="text/css" href="__HOMECSS__/common.css"/>
+  
+	<script type="text/javascript" src="__HOMEJS__/laydate/laydate.js" ></script> 	
+    <style>
+	.baoming{
+    	display: inline-block;
+		font-size: 16px;
+		font-weight: 400;
+		color: rgba(255,255,255,1);
+		width: 280px;
+		height: 52px;
+		background: rgba(36,144,56,1);
+		border-radius: 2px;
+		line-height: 52px;
+		margin: 0 10px;
+	}
+	.lunwen{
+		background-color: #e79628;
+		display: inline-block;
+		font-size: 16px;
+		font-weight: 400;
+		color: rgba(255,255,255,1);
+		width: 280px;
+		height: 52px;
+		border-radius: 2px;
+		line-height: 52px;
+		margin: 0 10px;
+	}
+    </style>
+		
+     
+	</head>
+	<body style="background:rgba(241,239,242,1);">
+		
+     {include file="public/header" /}
+     
+         
+        <script>
+  				var GetUploadify_url = "{:url('Uploadify/upload')}";
+		</script>    
+            
+            
+        <div class="nav">
+			<ul>
+				<li>
+					<a href="{:url('index/index')}">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="{:url('news/news')}">
+						新闻动态
+					</a>
+				</li>
+				<li class="on">
+					<a href="{:url('meeting/meeting')}">
+						会议信息
+					</a>
+				</li>
+				<li>
+					<a href="{:url('project/project')}">
+						物理与工程
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!--与首页样式相同 单独修改本页 .news.page_meetings-->
+		<div class="index page_meetings">
+			<div class="index_left">
+				<div class="index_news">
+					<div class="article">
+						<div class="bread">
+							<a href="{:url('meeting/meeting')}">会议信息></a>
+							<a href="">会议详情</a>
+						</div>
+						<h3>{$infom.name}</h3>
+						<div class="sign_two">
+							
+							{foreach name="$infom.group_arr" item='vo' key='k'}
+                               {if $vo!=""}
+                                <div class="inverted_two">
+                                    {$vo}
+                                </div>
+                                {/if}
+                            {/foreach}
+                            
+							<div class="numbox_two">
+								
+								<div class="time_two">
+									{$infom.add_time}
+								</div>
+								<div class="time_two">
+									浏览：{$infom.click}
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<table border="" cellspacing="" cellpadding="">
+							<tr>
+								<td width="167">
+									承办单位
+								</td>	
+								<td width="573">
+									{$infom.company}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									会议地点
+								</td>	
+								<td>
+									{$infom.address}
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									报名时间
+								</td>	
+								<td>
+									{$infom.baoming_time1}{$infom.baoming_time2}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									报到时间
+								</td>	
+								<td>
+									{$infom.baodao_time}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									会议时间
+								</td>	
+								<td>
+									{$infom.start_time}{$infom.end_time}
+								</td>
+							</tr>
+						</table>
+						<div class="loadbox">
+                        
+                        	{foreach name="info2" item='vo' key='k'}
+							<div class="item">
+								<div class="name">
+									<a href="{$config.ipaddress}/resource/download?resourceId={$vo.annex}&token={$osstoken}" download target="_blank" style="float: left; font-size: 14px; color: rgba(102,102,102,1);line-height: 19px; width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: underline;">{$vo.name}</a>
+								</div>
+								<a href="{$config.ipaddress}/resource/download?resourceId={$vo.annex}&token={$osstoken}" download target="_blank">下载</a>
+								<div class="clear"></div>
+							</div>
+                      		{/foreach}
+							
+						</div>
+						<div class="asbox">
+                        	{if !$user_id}
+                        		<input type="button" class="baoming" value="参会报名" onClick="nologin()">
+                                <input type="button" class="lunwen" value="论文提交" onClick="nologin()">
+                            {elseif !$infor || $infor.status=='0'}
+                            	<a href="javascript:;" class="participants">参会报名（{if $infor.status=='1'}已报名{else $infor.status!='1'}未报名{/if}）</a>
+                                <input type="button" class="lunwen" value="论文提交" onClick="nojoin()">
+                            
+                        	{else}	
+							<a href="javascript:;" class="participants">参会报名（{if $infor.status=='1'}已报名{else $infor.status!='1'}未报名{/if}）</a>
+							<a href="javascript:;" class="in on">论文提交（{if $infor.status=='1'}{$count2}{else $infor.status!='1'}0{/if}）</a>
+                            {/if}
+                            
+						</div>
+						
+						<div class="content">
+						
+							{$infom.content|raw}      
+							   
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+            {include file="public/right" /}
+            
+		</div>
+		
+		
+		<!--背景颜色-->
+		<div class="bg"></div>
+		
+		<!--参会报名-->
+		<div class="sign_up">
+			<div class="close_s">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<div class="formbox">
+				<h3 class="title_s">参会报名</h3>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					一、报名信息
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>单位
+					</div>
+					<div class="forbox">
+                        <input type="text" id="company" value="{$userform.company}" class="text1"/>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>姓名
+					</div>
+					<div class="forbox">
+                        <input type="text" id="name" value="{$userform.name}" class="text1"/>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>性别
+					</div>
+					<div class="forbox">
+						<label class="fl" for="radio1">
+							<input class="radios" type="radio" id="radio1" name="sex"  value="2" {if $userform.sex!=='1'}checked{/if}/>
+							女
+						</label>
+						<label class="fl" for="radio2">
+							<input class="radios" type="radio" id="radio2" name="sex"  value="1" />
+							男
+						</label>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>职称
+					</div>
+					<div class="forbox">
+						<input type="text" id="title" value="{$userform.title}" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>部门及职务
+					</div>
+					<div class="forbox">
+						<input type="text" id="department" value="{$userform.department}" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>手机
+					</div>
+					<div class="forbox">
+						<input type="text" id="mobile" value="{$userform.mobile}" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>邮箱
+					</div>
+					<div class="forbox">
+						<input type="text" id="email" value="{$userform.email}" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					二、参会费说明
+				</div>
+				<div class="plist">
+					{$infom.attendancefee|raw}
+				</div>
+                
+           
+				
+				<div class="redbox">
+					特别提醒：汇款时请在您备注栏注明参会人员姓名及大会名称，以便进行核对
+				</div>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					三、参会费缴纳
+				</div>
+				<div class="modelist">
+					<label for="radio12">
+						<input class="radios" type="radio" id="radio12" name="payment" value="0" checked>
+						转账汇款
+					</label>
+					<label for="radio13">
+						<input class="radios" type="radio" id="radio13" name="payment" value="1">
+						现场缴费（为节省您排队等候时间，建议提前汇款）
+					</label>
+				</div>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					四、开票信息
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>公司名称
+					</div>
+					<div class="forbox">
+						<input type="text" id="companyname" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>税号
+					</div>
+					<div class="forbox">
+						<input type="text" id="duty" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>单位地址
+					</div>
+					<div class="forbox">
+						<input type="text" id="companyadd" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>电话号码
+					</div>
+					<div class="forbox">
+						<input type="text" id="tel" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>开户银行
+					</div>
+					<div class="forbox">
+						<input type="text" id="deposit" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						<span>*</span>银行账户
+					</div>
+					<div class="forbox">
+						<input type="text" id="account" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					五、发票项目
+				</div>
+				<div class="frees">
+					<div class="boxs">
+						<label for="radio3">
+							<input class="radios" type="radio" id="radio3" name="project" value="0"/ checked>
+							会议费
+						</label>
+					</div>
+					<div class="boxs">
+						<label for="radio4">
+							<input class="radios" type="radio" id="radio4" name="project" value="1" / >
+							会务费
+						</label>
+					</div>
+					
+				</div>
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					六、发票邮寄地址(如无法现场领取发票，由组织方邮寄，费用到付。如现场领取发票此项不用填写)
+				</div>
+				<div class="coner">
+					<div class="name">
+						收件人姓名
+					</div>
+					<div class="forbox">
+						<input type="text" id="addressname" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						收件人电话
+					</div>
+					<div class="forbox">
+						<input type="text" id="addresstel" value="" class="text1" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="coner">
+					<div class="name">
+						收件地址
+					</div>
+					<div class="forbox">
+                    
+                        <!--<div class="s_baos"> <select id="s_province" name="s_province" class="select"><option value="{$lastform2.s_province}">{$lastform2.s_province}</option></select></div>
+
+                        <div class="s_baos"><select id="s_city" name="s_city" class="select"><option value="{$lastform2.s_city}">{$lastform2.s_city}</option></select></div>
+
+                        <div class="s_baos"><select id="s_county" name="s_county" class="select"><option value="{$lastform2.s_county}">{$lastform2.s_county}</option></select></div>-->
+                         
+                               
+                       <div class="s_baos">
+							<select name="s_province" class="select" id="province" lay-filter="province" onChange="sun_province()">
+								<option>省/自治区/直辖</option>
+                                {foreach name='province' item='vo' key='k'}
+                                	<option value="{$vo.region_id}" >{$vo.region_name}</option>
+                                {/foreach}
+							</select>
+						</div>
+						<div class="s_baos">
+                            <select name="s_city" class="select" id="city" onChange="sun_city()">
+                            	<option>市</option>
+                                {foreach name='city' item='vo' key='k'}
+                                	<option value="{$vo.region_id}">{$vo.region_name}</option>
+                                {/foreach}
+                                
+                            </select>
+						</div>
+						<div class="s_baos">
+							<select name="s_county" class="select" id="county">
+								<option>区/县</option>
+                                {foreach name='county' item='vo' key='k'}
+                                	<option value="{$vo.region_id}">{$vo.region_name}</option>
+                                {/foreach}
+							</select>
+						</div>
+                        
+                    
+						<div class="clear"></div>
+						<input type="text" id="addressadd" value="" class="text1" placeholder="详细地址" />
+					</div>
+					<div class="clear"></div>
+				</div>
+                
+                <script>
+                	function sun_province(){
+						var province=$('#province').val();
+						
+						if(province>0){
+							$.ajax({
+								url: "/home/meeting/ajax_address",
+								type:"post",
+								data:{region_id:province},
+								dataType:"json",
+								success: function(data){
+									console.log(data);
+									
+									
+									var htmlstr="";
+									data.forEach(function(val,key){
+										htmlstr=htmlstr+'<option value="'+val.region_id+'">'+val.region_name+'</option>';
+									});
+									
+									$('#city').html('<option>市</option>'+htmlstr);
+									$('#county').html('<option>区/县</option>');
+							   }
+							 });
+						}else{
+							$('#city').html('<option>市</option>');
+							$('#county').html('<option>区/县</option>');
+						}
+
+					}
+					
+					function sun_city(){
+						var city=$('#city').val();
+						
+						if(city>0){
+							$.ajax({
+								url: "/home/meeting/ajax_address",
+								type:"post",
+								data:{region_id:city},
+								dataType:"json",
+								success: function(data){
+									console.log(data);
+									
+									
+									var htmlstr="";
+									data.forEach(function(val,key){
+										htmlstr=htmlstr+'<option value="'+val.region_id+'">'+val.region_name+'</option>';
+									});
+									
+									$('#county').html('<option>区/县</option>'+htmlstr);
+							   }
+							 });
+						}else{
+							$('#county').html('<option>区/县</option>');
+						}
+						
+					}
+					
+                
+                </script>
+                
+                
+				<div class="title" style="font-size: 16px;font-weight: 600;">
+					七、住房预定
+				</div>
+				<div class="housing">
+               
+                	{foreach name="list" item='vo' key='k'}
+                            
+					<div class="house_block">
+						<label for="radio{$vo.hotel_id}">
+							<input class="radios" type="radio" id="radio{$vo.hotel_id}" name="hotel_id" value="{$vo.hotel_id}" />
+							{$vo.name}({$vo.address})
+						</label>
+						<p>{$vo.content}</p>
+						<div class="external">
+							<div class="specifications">
+								<div class="name_two">
+									房间规格
+								</div>
+								<div class="mations">
+                                
+                                	{foreach name="$vo.data" item='vovo' key='kk'}
+									<label class="fl" for="radio{$vovo.room_id}{$vovo.room_id}">
+										<input class="radios" type="radio" id="radio{$vovo.room_id}{$vovo.room_id}" name="room_id" value="{$vovo.room_id}" />
+										{$vovo.name}
+									</label>
+									{/foreach}
+                                    
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="specifications">
+								<div class="name_two">
+									入驻时间
+								</div>
+								<div class="mations">
+									<input  style="text-align: center;"  type="text" name="in_time{$vo.hotel_id}" id="in_time{$vo.hotel_id}" class="text3" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="specifications">
+								<div class="name_two">
+									离店时间
+								</div>
+								<div class="mations">
+									<input style="text-align: center;"  type="text" name="out_time{$vo.hotel_id}" id="out_time{$vo.hotel_id}" class="text3" }/>
+								</div>
+								<div class="clear"></div>
+							</div>
+                            
+                            
+                            
+							  <script>
+                                //执行一个laydate实例
+                                
+                                //日期时间选择器
+                                
+                                laydate.render({
+                                  elem: '#in_time{$vo.hotel_id}'
+                                  ,type: 'date'
+                                });
+                                
+                                laydate.render({
+                                  elem: '#out_time{$vo.hotel_id}'
+                                  ,type: 'date'
+                                });
+                                
+                            
+                            </script>
+                            
+                            
+							<div class="specifications">
+								<div class="name_two">
+									是否同意拼房
+								</div>
+								<div class="mations">
+									<label class="fl" for="radio16{$vo.hotel_id}">
+										<input class="radios" type="radio" id="radio16{$vo.hotel_id}" name="spare" value="0" />
+										是
+									</label>
+									<label class="fl" for="radio17{$vo.hotel_id}">
+										<input class="radios" type="radio" id="radio17{$vo.hotel_id}" name="spare" value="1" />
+										否
+									</label>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						
+					</div>
+                    {/foreach}
+                   
+					
+					<div class="btnlist">
+						<a href="/home/meeting/meeting_detail2.html?id={$id}" class="btn">重置</a>
+                        <input type="hidden" name="id" id="id" value="{$id}">
+                        <input type="button" id="" name="" value="提交" class="btn on"  onClick="ajax_form()"/>
+                        
+                        <input type="hidden" name="idcompany" id="idcompany" value="{$userform.company}">
+                         <input type="hidden" name="idname" id="idname" value="{$userform.name}">
+                         <input type="hidden" name="idsex" id="idsex" value="{$userform.sex}"> 
+                         <input type="hidden" name="idtitle" id="idtitle" value="{$userform.title}">
+                         <input type="hidden" name="iddepartment" id="iddepartment" value="{$userform.department}">
+                        
+                        
+                        {if $infor.status==1 }<input type="button" id="" name="" value="取消报名" class="btn on"  onClick="quxiao()"/>{/if}
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+        
+       
+        
+		
+		<!--论文提交-->
+		<div class="submission_box">
+			<div class="close_s">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<div class="contains">
+				<h3 class="title_s">论文提交</h3>
+				<dl>
+					<dt>已提交论文列表</dt>
+                    
+                    {if  $infor.status=='1'}
+                   {foreach name="list2" item='vo' key='k'}
+					<dd>
+						<div class="ns">
+							{$vo.name}
+						</div>
+						<div class="lookfor">
+							<div class="num">
+								<!--3MB-->	
+							</div>
+							<div class="alists">
+								<div class="asbox">
+									<a href="{$config.ipaddress}/resource/download?resourceId={$vo.annex}&token={$osstoken}" target="_blank">下载</a>
+									<a onClick="del()">删除</a>
+								</div>
+                                <input type="hidden" name="paper_id" id="paper_id" value="{$vo.paper_id}">
+                                
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</dd>
+                   {/foreach}
+                   {/if}
+                    
+					
+                    
+				</dl>
+				<a href="javascript:;" class="plus">
+					<div class="sings">
+						<span>新增论文</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		
+		<!--新怎论文-->
+		<div class="new_papers">
+			<div class="close_s">
+				<img src="__HOMEIMG__/close.png"/>
+			</div>
+			<div class="contains">
+				<h3 class="title_s">论文提交</h3>
+				<dl class="on">
+					<dt class="mg">新增论文（只能上传doc、docx、pdf、zip、rar、ppt、pptx文件，文件大小不超过20M。）</dt>
+					<dd>
+						<div class="name_three">
+							<i>*</i>题目
+						</div>
+						<div class="infoes">
+							<input type="text" class="text4" name="name1" id="name1" value="" />
+						</div>
+						<div class="clear"></div>
+					</dd>
+					<dd>
+						<div class="name_three">
+							<i>*</i>论文上传
+						</div>
+						<div class="infoes">
+							<div id="fileName" class="filename"></div>
+							<!--<div  style="width:500px;">-->
+							<!--	<span>添加文件</span>   class="filebox"  -->
+                                
+
+
+
+  <div class="tab-pane active" id="video-chooser-upload-pane">
+    <div class="file-chooser-uploader">
+      <div id="batch-uploader" class="balloon-uploader"
+           data-target-id="0"
+           data-target-type=""
+           data-upload-type="file"
+           data-uploader-auth-url="{$config.ipaddress}/app_dev.php/cloud/uploader/auth"
+           data-note="这里是我们自己定义的，前端根据需求自行调整，样式也自行调整，只有ballon-uploader-body内部分起作用"
+      >
+        <div class="balloon-uploader-body">
+
+
+          <div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+          <div id="container">
+            <a id="selectfiles" href="javascript:void(0);" class='btn' style="width: 81px; height: 26px; background: rgba(13,68,156,1); border-radius: 2px; font-size: 14px; color: rgba(255,255,255,1); position: relative; color: #FFFFFF; font-size: 14px; text-align: center; line-height: 26px; cursor: pointer; margin-top: 4px; float: left;margin-left: 20px;">选择文件</a>
+            <a id="postfiles" href="javascript:void(0);" class='btn' style="width: 81px; height: 26px; background: rgba(13,68,156,1); border-radius: 2px; font-size: 14px; color: rgba(255,255,255,1); position: relative; color: #FFFFFF; font-size: 14px; text-align: center; line-height: 26px; cursor: pointer; margin-top: 4px; float: left;margin-left: 20px;">开始上传</a>
+            
+          </div>
+        
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+<script type="text/javascript" src="__STATIC__/layuiadmin/oss/plupload/2.1.2/js/plupload.full.min.js"></script>
+
+<script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+	 <script src="__STATIC__/layuiadmin/layui/layui.js"></script>
+<script> 
+	
+	var url= "{$config.ipaddress}/upload/auth?token={$osstoken}";
+
+ </script>
+ <script type="text/javascript" src="__STATIC__/layuiadmin/oss/upload.js"></script>
+ 
+ 
+ 
+         <input type="hidden" class="uplodes" name="response" id="response" value="" />
+         
+         
+         
+                       
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</dd>
+				</dl>
+				<div class="btnlist mg2">
+					<a href="" class="btn">重置</a>
+                     <input type="hidden" name="id" id="id" value="{$id}">
+                    <input type="submit" id="" name="" value="提交" class="btn on"  onClick="ajax_form2()"/>
+				</div>
+			</div>
+		</div>
+		
+			{include file="public/footer" /}
+        
+		
+              
+           <script src="__STATIC__/layuiadmin/layui/layui.js"></script>
+		   <script type="text/javascript" src="__HOMEJS__/rili.js" ></script>
+       
+		
+    
+    
+		<script>
+            var url= "/admin/meeting/meeting_annex_json/id/{$id}.html";
+            var editUrl = "/admin/meeting/meeting_annex_edit.html";
+            var addUrl = "/admin/meeting/meeting_annex_add/id/{$id}.html";
+            var delUrl = "/admin/meeting/meeting_annex_del.html";
+            layui.config({
+                base: '__STATIC__/layuiadmin/',version: true    }).extend({
+                index: 'lib/index' //主入口模块
+            }).use(['index','annex']);
+        </script>
+    
+    <!--
+        <script type="text/javascript" src="/static/layuiadmin/modules/annex.js" ></script>-->
+		<script>
+			//执行一个laydate实例
+			
+            //日期时间选择器
+			
+			laydate.render({
+			  elem: '#in_time'
+			  ,type: 'datetime'
+   			});
+			
+			laydate.render({
+			  elem: '#out_time'
+			  ,type: 'datetime'
+   			});
+			
+		
+		</script>
+		<script>
+			$('.participants').on('click',function(){
+				$('.bg').fadeIn();
+				$('.sign_up').fadeIn();
+			})
+			
+			
+			$('.in').on('click',function(){
+				$('.bg').fadeIn();
+				$('.submission_box').fadeIn();
+			})
+			
+			
+			$('.close_s').on('click',function(){
+				$('.bg').fadeOut();
+				$('.sign_up,.submission_box,.new_papers').fadeOut();
+			})
+			
+			$('.plus .sings').on('click',function(){
+				$('.new_papers').fadeIn();
+			})
+			
+			
+			
+			$('.sign_up .housing .external').not($('.sign_up .housing .external').eq(0).show());
+		//	$('.sign_up .housing label .radios').eq(0).prop('checked',true);
+			
+			$('.sign_up .housing label').on('click',function(){
+				if($(this).find('.radios').prop('checked')==false){
+					$(this).find('.radios').prop('checked',true);
+					$(this).siblings('.external').show();
+					$(this).parents('.house_block').siblings().find('.external').hide();
+				}
+			})
+			$(".sign_up .housing label .radios").on("click",function(event){
+				event.stopPropagation();
+			});
+		</script>
+        
+   
+        
+        
+		<script>
+			function fileSelected() {
+			    var file = document.getElementById('annexUpload').files[0];
+			    if (file) {
+			        var fileSize = 0;
+			        if (file.size > 1024 * 1024)
+			            fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+			        else
+			            fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+			        document.getElementById('fileName').innerHTML =  file.name;
+			        $('.filebox').addClass('on');
+			        $('.filebox span').html('更换');
+			        $('.replace').show();
+			    }
+			}
+
+			function uploadFile() {
+			    var fd = new FormData();
+			    fd.append("annexUpload", document.getElementById('annexUpload').files[0]);
+			    var xhr = new XMLHttpRequest();
+			    xhr.upload.addEventListener("progress", uploadProgress, false);
+			    xhr.addEventListener("load", uploadComplete, false);
+			    xhr.addEventListener("error", uploadFailed, false);
+			    xhr.addEventListener("abort", uploadCanceled, false);
+			    xhr.open("POST", "upload.do"); //修改成自己的接口
+			    xhr.send(fd);
+			}
+
+			function uploadProgress(evt) {
+			    if (evt.lengthComputable) {
+			        var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+			        document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+			    } else {
+			        document.getElementById('progressNumber').innerHTML = 'unable to compute';
+			    }
+			}
+
+			function uploadComplete(evt) {
+			    /* 服务器端返回响应时候触发event事件*/
+			    alert(evt.target.responseText);
+			}
+			
+			function uploadFailed(evt) {
+			    alert("There was an error attempting to upload the file.");
+			}
+			
+			function uploadCanceled(evt) {
+			    alert("The upload has been canceled by the user or the browser dropped the connection.");
+			}
+		</script>
+      
+        
+        
+        <script>
+        	function ajax_form2(){
+				var meeting_id=$('#id').val();
+				var name=$('#name1').val();
+				var annex=$('#response').val();
+					
+				//	console.log(annex);
+				if(name == ''){
+					alert('请输入题目');
+					return false;
+				}	
+				if(annex == ''){
+					alert('请添加上传附件');
+					return false;
+				}
+				$.ajax({
+						url: "{:url('meeting/ajax_form2')}",
+						type:"POST",
+						data:{name:name,meeting_id:meeting_id,annex:annex},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('提交成功！', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else if(data.code==1){
+								layer.msg('提交失败！', {time: 1500});
+							}else if(data.code==3){
+								layer.msg('请先报名！', {time: 1500});
+							}else{
+								layer.msg('请先登录！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+        
+        <script>
+        	function del(){
+				var paper_id=$('#paper_id').val();
+				
+				$.ajax({
+						url: "{:url('meeting/del')}",
+						type:"POST",
+						data:{paper_id:paper_id},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('删除成功！', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else{
+								layer.msg('删除失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+                
+                        
+        <script>
+        	function ajax_form(){
+				
+				
+				
+				var company0=$('#idcompany').val();
+				var name0=$('#idname').val();
+				var title0=$('#idtitle').val();
+				var department0=$('#iddepartment').val();
+				var sex0=$('#idsex').val();
+				
+					 	 
+				var catid=$('#id').val();
+				var company=$('#company').val();
+				var name=$('#name').val();
+				var title=$('#title').val();
+				var department=$('#department').val();
+				
+				
+				
+				var mobile=$('#mobile').val();
+				var email=$('#email').val();
+				
+			
+				var companyname=$('#companyname').val();
+				var duty=$('#duty').val();
+				var companyadd=$('#companyadd').val();
+				var tel=$('#tel').val();
+				var deposit=$('#deposit').val();
+				var account=$('#account').val();
+				
+				var sex=$("input[name='sex']:checked").val();
+				var payment=$("input[name='payment']:checked").val();
+				var project=$("input[name='project']:checked").val();
+				
+			
+				var spare=$("input[name='spare']:checked").val();
+				
+				var addressname=$('#addressname').val();
+				var addresstel=$('#addresstel').val();
+				var addressadd=$('#addressadd').val();
+				
+				var hotel_id=$("input[name='hotel_id']:checked").val();
+				var room_id=$("input[name='room_id']:checked").val();
+				var in_time=$('#in_time'+hotel_id).val();
+				var out_time=$('#out_time'+hotel_id).val();
+				
+				var s_province=$('#province').val();
+				var s_city=$('#city').val();
+				var s_county=$('#county').val();
+				
+				
+				if(company == ''){
+					layer.msg('请输入单位！', {time: 1500});
+					return false;
+				}
+				if(name == ''){
+					layer.msg('请输入姓名！', {time: 1500});
+					return false;
+				}
+				
+				if(title == ''){
+					layer.msg('请输入职称！', {time: 1500});
+					return false;
+				}
+				if(department == ''){
+					layer.msg('请输入部门及职务！', {time: 1500});
+					return false;
+				}
+				
+					if(!(/^1[3456789]\d{9}$/.test(mobile))){ 
+					layer.msg('手机号码格式有误，请重填！', {time: 1500});
+					return false; 
+				} 
+				
+				
+				if(!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(email))){
+					layer.msg('邮箱格式有误，请重填！', {time: 1500});
+					return false;
+				}
+				
+				
+				
+				if(payment == ''){
+					layer.msg('请选择参会费缴纳方式！', {time: 1500});
+					return false;
+				}
+				if(companyname == ''){
+					layer.msg('请输入公司名称！', {time: 1500});
+					return false;
+				}
+				if(duty == ''){
+					layer.msg('请输入税号！', {time: 1500});
+					return false;
+				}
+				if(tel == ''){
+					layer.msg('请输入单位地址！', {time: 1500});
+					return false;
+				}
+				if(tel == ''){
+					layer.msg('请输入电话号码！', {time: 1500});
+					return false;
+				}
+				if(deposit == ''){
+					layer.msg('请输入开户银行！', {time: 1500});
+					return false;
+				}
+				if(account == ''){
+					layer.msg('请输入银行账户！', {time: 1500});
+					return false;
+				}
+				if(project == ''){
+					layer.msg('请选择发票项目！', {time: 1500});
+					return false;
+				}
+				
+				
+				if (in_time >= out_time) {
+					layer.msg('离店时间不能早于入驻时间', {time: 1500});
+					return false;
+				}
+				
+				
+				
+				
+				
+				if (company0 != company || name0 !=name || title0 != title || department0 != department || sex0!= sex) {
+				
+				layer.confirm('是否确认修改报名信息内的个人信息？', { 
+						btn: ['是','否'] //按钮 
+					},  
+					
+				
+					
+				function(){ 
+					 
+				
+//				
+				$.ajax({
+						url: "{:url('meeting/ajax_form')}",
+						type:"GET",
+						data:{catid:catid,company:company,name:name,title:title,department:department,mobile:mobile,email:email,companyname:companyname,duty:duty,companyadd:companyadd,tel:tel,deposit:deposit,account:account,sex:sex,payment:payment,project:project,spare:spare,addressname:addressname,addresstel:addresstel,addressadd:addressadd,hotel_id:hotel_id,room_id:room_id,in_time:in_time,out_time:out_time,s_province:s_province,s_city:s_city,s_county:s_county,xiugai:0},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							//console.log(data);
+							if(data.code==0){
+								layer.msg('提交成功!', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else if(data.code==1){
+								layer.msg('提交失败！', {time: 1500});
+							}else{
+								layer.msg('请先登录！', {time: 1500});
+							}
+					   }
+			 });
+				
+						
+			 },
+			 
+			 
+			function(){ 
+				
+			
+				$.ajax({
+						url: "{:url('meeting/ajax_form000')}",
+						type:"GET",
+						data:{catid:catid,company:company,name:name,title:title,department:department,mobile:mobile,email:email,companyname:companyname,duty:duty,companyadd:companyadd,tel:tel,deposit:deposit,account:account,sex:sex,payment:payment,project:project,spare:spare,addressname:addressname,addresstel:addresstel,addressadd:addressadd,hotel_id:hotel_id,room_id:room_id,in_time:in_time,out_time:out_time,s_province:s_province,s_city:s_city,s_county:s_county,xiugai:1},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							//console.log(data);
+							if(data.code==0){
+								layer.msg('提交成功!', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else if(data.code==1){
+								layer.msg('提交失败！', {time: 1500});
+							}else{
+								layer.msg('请先登录！', {time: 1500});
+							}
+					   }
+				 });
+			
+			});
+			
+			return false;
+			}
+			
+							$.ajax({
+						url: "{:url('meeting/ajax_form000')}",
+						type:"GET",
+						data:{catid:catid,company:company,name:name,title:title,department:department,mobile:mobile,email:email,companyname:companyname,duty:duty,companyadd:companyadd,tel:tel,deposit:deposit,account:account,sex:sex,payment:payment,project:project,spare:spare,addressname:addressname,addresstel:addresstel,addressadd:addressadd,hotel_id:hotel_id,room_id:room_id,in_time:in_time,out_time:out_time,s_province:s_province,s_city:s_city,s_county:s_county,xiugai:1},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							//console.log(data);
+							if(data.code==0){
+								layer.msg('提交成功!', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else if(data.code==1){
+								layer.msg('提交失败！', {time: 1500});
+							}else{
+								layer.msg('请先登录！', {time: 1500});
+							}
+					   }
+				 });
+			
+			
+			
+			
+		}
+		
+	
+        
+        </script>
+        
+        <script>
+        function nojoin(){
+			layer.msg('请先报名！',{time: 1500});
+		}
+        </script>
+        
+        <script>
+        function nologin(){
+			window.location.href="/home/user/login.html";
+		}
+        </script>
+         
+        <script>
+        	function quxiao(){
+				var catid=$('#id').val();
+				
+				$.ajax({
+						url: "{:url('meeting/quxiao')}",
+						type:"POST",
+						data:{catid:catid},
+						//,sex:sex,
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							if(data.code==0){
+								layer.msg('取消成功！', {time: 1500},function(){
+									window.location.href="/home/meeting/meeting_detail.html?id={$id}";
+								});
+								
+							}else{
+								layer.msg('取消失败！', {time: 1500});
+							}
+					   }
+			 });
+				
+			}
+        
+        </script>
+        
+    
+        
+	</body>
+</html>
